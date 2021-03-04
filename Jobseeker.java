@@ -4,6 +4,12 @@
 
 public class Jobseeker
 {
+    private int id;
+    private String name;
+    private String email;
+    private String password;
+    private String joinDate;
+    
     public Jobseeker() {}
     public int getID() {
         return 0;
@@ -25,10 +31,4 @@ public class Jobseeker
     public void setEmail(String email) {}
     public void setPassword(String password) {}
     public void setJoinDate(String joinDate) {}
-    
-    private int id;
-    private String name;
-    private String email;
-    private String password;
-    private String joinDate;
 }

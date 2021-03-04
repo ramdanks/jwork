@@ -4,6 +4,11 @@
 
 public class Invoice
 {
+    private int id;
+    private int idJob;
+    private String date;
+    private int totalFee;
+    
     public Invoice() {}
     public int getId() {
         return 0;
@@ -21,9 +26,4 @@ public class Invoice
     public void setIdJobs(int idJobs) {}
     public void setDate(String date) {}
     public void setTotalFee(int totalFee) {}
-    
-    private int id;
-    private int idJob;
-    private String date;
-    private int totalFee;
 }

@@ -4,6 +4,11 @@
 
 public class Job
 {
+    private int id;
+    private String name;
+    private int fee;
+    private String category;
+    
     public Job() {}
     public int getId(){
         return 0;
@@ -21,9 +26,4 @@ public class Job
     public void setName(String name) {}
     public void setFee(int fee) {}
     public void setCategory(String category) {}
-    
-    private int id;
-    private String name;
-    private int fee;
-    private String category;
 }

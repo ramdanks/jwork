@@ -4,6 +4,11 @@
 
 public class Recruiter
 {
+    private int id;
+    private String name;
+    private String email;
+    private String phoneNumber;
+    
     public Recruiter() {}
     public int getID() {
         return 0;
@@ -21,9 +26,4 @@ public class Recruiter
     public void setEmail(String email) {}
     public void setName(String name) {}
     public void setPhoneNumber(String phoneNumber) {}
-    
-    private int id;
-    private String name;
-    private String email;
-    private String phoneNumber;
 }
