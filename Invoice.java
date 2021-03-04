@@ -20,7 +20,7 @@ public class Invoice
     public void setId(int id) {}
     public void setIdJobs(int idJobs) {}
     public void setDate(String date) {}
-    public void setTotalFee(String totalFee) {}
+    public void setTotalFee(int totalFee) {}
     
     private int id;
     private int idJob;

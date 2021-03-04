@@ -17,5 +17,5 @@ comment7.target=void\ setIdJobs(int)
 comment8.params=date
 comment8.target=void\ setDate(java.lang.String)
 comment9.params=totalFee
-comment9.target=void\ setTotalFee(java.lang.String)
+comment9.target=void\ setTotalFee(int)
 numComments=10
