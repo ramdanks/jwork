@@ -58,34 +58,35 @@ public class Recruiter
     }
     /**
      * mutasi id perekrut
-     * @param int: menset id perekrut
+     * @param int: id perekrut
      */
     public void setID(int id) {
         this.id = id;
     }
     /**
      * mutasi email perekrut
-     * @param String: menset email perekrut
+     * @param String: email perekrut
      */
     public void setEmail(String email) {
         this.email = email;
     }
     /**
      * mutasi nama perekrut
-     * @param String: menset nama perekrut
+     * @param String: nama perekrut
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
-     * @param String: menset nomor telepon perekrut
+     * mutasi nomor telepon perekrut
+     * @param String: nomor telepon perekrut
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     /**
      * mutasi lokasi perekrut
-     * @param Location: menset lokasi perekrut
+     * @param Location: lokasi perekrut
      */
     public void setLocation(Location location) {
         this.location = location;
