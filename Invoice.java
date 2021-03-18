@@ -1,6 +1,9 @@
-
-// @Author: Ramadhan Kalih Sewu (1806148826)
-// @Version: 210318
+/**
+* @Author: Ramadhan Kalih Sewu (1806148826)
+* @Version: 210318
+* 
+* Kelas untuk menyimpan informasi faktur
+*/
 
 public class Invoice
 {
@@ -18,37 +21,82 @@ public class Invoice
         this.totalFee = totalFee;
         this.jobseeker = jobseeker;
     }
+    /**
+     * akses id faktur
+     * @return int: nomor id faktur
+     */
     public int getId() {
         return this.id;
     }
+    /**
+     * akses id job faktur
+     * @return int: nomor id pekerjaan dalam faktur
+     */
     public int getIdJob() {
         return this.idJob;
     }
+    /**
+     * akses tanggal faktur
+     * @return String: tanggal faktur
+     */
     public String getDate() {
         return this.date;
     }
+    /**
+     * akses total tagihan faktur
+     * @return int: jumlah tagihan
+     */
     public int getTotalFee() {
         return this.totalFee;
     }
+    /**
+     * akses jobseeker
+     * @return Jobseeker: jobseeker
+     */
     public Jobseeker getJobseeker() {
         return this.jobseeker;
     }
+    /**
+     * mutasi id faktur
+     * @param int: menset id faktur
+     */
     public void setId(int id) {
         this.id = id;
     }
+    /**
+     * mutasi id job faktur
+     * @param int: menset id job faktur
+     */
     public void setIdJobs(int idJob) {
         this.idJob = idJob;
     }
+    /**
+     * mutasi tanggal faktur
+     * @param String: menset tanggal faktur
+     */
     public void setDate(String date) {
         this.date = date;
     }
+    /**
+     * mutasi total tagihan faktur
+     * @param int: menset total tagihan
+     */
     public void setTotalFee(int totalFee) {
         this.totalFee = totalFee;
     }
+    /**
+     * mutasi jobseeker
+     * @param Jobseeker: menset jobseeker
+     */
     public void setJobseeker(Jobseeker jobseeker) {
         this.jobseeker = jobseeker;
     }
+    /**
+     * mencetak seluruh informasi faktur ke terminal
+     */
     public void printData() {
+        // Melakukan pencetakan kepada console (terminal)
+        // tentang setiap data yang tercatat pada faktur
         System.out.println("id       : " + this.id);
         System.out.println("idJob    : " + this.idJob);
         System.out.println("date     : " + this.date);
