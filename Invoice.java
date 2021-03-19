@@ -97,6 +97,7 @@ public class Invoice
     public void printData() {
         // Melakukan pencetakan kepada console (terminal)
         // tentang setiap data yang tercatat pada faktur
+        System.out.println("[Invoice]");
         System.out.println("id       : " + this.id);
         System.out.println("idJob    : " + this.idJob);
         System.out.println("date     : " + this.date);

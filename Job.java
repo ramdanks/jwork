@@ -1,6 +1,6 @@
 /**
 * @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210318
+* @Version: 210319
 * 
 * Kelas untuk menyimpan informasi tentang entri kerja
 */
@@ -90,5 +90,16 @@ public class Job
      */
     public void setCategory(String category) {
         this.category = category;
+    }
+    /**
+     * mencetak informasi job ke terminal
+     */
+    public void printData() {
+        System.out.println("[Job]");
+        System.out.println("id       : " + this.id);
+        System.out.println("name     : " + this.name);
+        System.out.println("recruiter: " + this.recruiter.getName());
+        System.out.println("fee      : " + this.fee);
+        System.out.println("category : " + this.category);
     }
 }
