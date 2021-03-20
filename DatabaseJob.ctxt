@@ -1,13 +1,18 @@
 #BlueJ class context
 comment0.target=DatabaseJob
+comment0.text=\r\n\ @Author\:\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @Version\:\ 210318\r\n\ \r\n\ Kelas\ untuk\ menyimpan\ list\ pekerjaan\ yang\ tersedia\r\n
 comment1.params=
 comment1.target=DatabaseJob()
 comment2.params=job
 comment2.target=boolean\ addJob(Job)
+comment2.text=\r\n\ menambah\ entri\ job\ kedalam\ database\r\n\ @param\ Job\:\ job\r\n\ @return\ boolean\:\r\n
 comment3.params=job
 comment3.target=boolean\ removeJob(Job)
+comment3.text=\r\n\ menghapus\ entri\ job\ kedalam\ database\r\n\ @param\ Job\:\ job\r\n\ @return\ boolean\:\r\n
 comment4.params=
 comment4.target=Job\ getJob()
+comment4.text=\r\n\ meminta\ job\ dari\ database\r\n\ @return\ Job\:\ job\r\n
 comment5.params=
 comment5.target=java.lang.String[]\ getListJob()
+comment5.text=\r\n\ meminta\ seluruh\ list\ yang\ tercatat\ dalam\ database\r\n\ @return\ String[]\:\ list\ job\r\n
 numComments=6

@@ -7,7 +7,7 @@
 
 public class DatabaseJob
 {
-    private String[] listJob;
+    private static String[] listJob;
     
     public DatabaseJob() {}
     /**
@@ -15,7 +15,8 @@ public class DatabaseJob
      * @param Job: job
      * @return boolean:
      */
-    public boolean addJob(Job job) {
+    public static boolean addJob(Job job) {
+        System.out.println("Job ditambahkan ke Database");
         return false;
     }
     /**
@@ -23,21 +24,21 @@ public class DatabaseJob
      * @param Job: job
      * @return boolean:
      */
-    public boolean removeJob(Job job) {
+    public static boolean removeJob(Job job) {
         return false;
     }
     /**
      * meminta job dari database
      * @return Job: job
      */
-    public Job getJob() {
+    public static Job getJob() {
         return null;
     }
     /**
      * meminta seluruh list yang tercatat dalam database
      * @return String[]: list job
      */
-    public String[] getListJob() {
-        return null;
+    public static String[] getListJob() {
+        return DatabaseJob.listJob;
     }
 }
