@@ -1,9 +1,8 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210318
-* 
-* Kelas untuk menyimpan data pencari kerja
-*/
+ * Kelas untuk menyimpan data pencari kerja
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 
 public class Jobseeker
 {
@@ -27,35 +26,35 @@ public class Jobseeker
      * @return int: nomor id entri jobseeker
      */
     public int getID() {
-        return this.id;
+        return id;
     }
     /**
      * akses nama jobseeker
      * @return String: nama jobseeker
      */
     public String getName() {
-        return this.name;
+        return name;
     }
     /**
      * akses email jobseeker
      * @return String: email jobseeker
      */
     public String getEmail() {
-        return this.email;
+        return email;
     }
     /**
      * akses password jobseeker
      * @return String: password jobseeker
      */
     public String getPassword() {
-        return this.password;
+        return password;
     }
     /**
      * akses tanggal bergabung
-     * @return string: tanggal bergabung
+     * @return String: tanggal bergabung
      */
     public String getJoinDate() {
-        return this.joinDate;
+        return joinDate;
     }
     /**
      * mutasi id jobseeker

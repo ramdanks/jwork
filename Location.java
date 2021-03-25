@@ -1,9 +1,8 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210318
-* 
-* Kelas untuk menyimpan informasi lokasi
-*/
+ * Kelas untuk menyimpan informasi lokasi
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 
 public class Location
 {
@@ -21,21 +20,21 @@ public class Location
      * @return String: lokasi provinsi
      */
     public String getProvince() {
-        return this.province;
+        return province;
     }
     /**
      * akses lokasi kota
      * @return String: lokasi kota
      */
     public String getCity() {
-        return this.city;
+        return city;
     }
     /**
      * akses keterangan lokasi
      * @return String: keterangan lokasi
      */
     public String getDescription() {
-        return this.description;
+        return description;
     }
     /**
      * mutasi lokasi provinsi

@@ -1,10 +1,9 @@
-
 /**
- * Menyimpan seluruh database recruiter
- *
- * @author Ramadhan Kalih Sewu
- * @version 210320
+ * Kelas yang menyimpan seluruh database recruiter
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
  */
+
 public class DatabaseRecruiter
 {
     private static String[] listRecruiter;
@@ -21,6 +20,6 @@ public class DatabaseRecruiter
         return null;
     }
     public static String[] getListRecruiter() {
-        return DatabaseRecruiter.listRecruiter;
+        return listRecruiter;
     }
 }

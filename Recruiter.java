@@ -1,9 +1,8 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210318
-* 
-* Kelas untuk menyimpan informasi perekrut kerja
-*/
+ * Kelas untuk menyimpan informasi perekrut kerja
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 
 public class Recruiter
 {
@@ -26,35 +25,35 @@ public class Recruiter
      * @return int: nomor id perekrut
      */
     public int getID() {
-        return this.id;
+        return id;
     }
     /**
      * akses nama perekrut
      * @return String: nama perekrut
      */
     public String getName() {
-        return this.name;
+        return name;
     }
     /**
      * akses email perekrut
      * @return String: email perekrut
      */
     public String getEmail() {
-        return this.email;
+        return email;
     }
     /**
      * akses nomor telepon perekrut
      * @return String: nomor telepon perekrut
      */
     public String getPhoneNumber() {
-        return this.phoneNumber;
+        return phoneNumber;
     }
     /**
      * akses lokasi perekrut
      * @return Location: lokasi perekrut
      */
     public Location getLocation() {
-        return this.location;
+        return location;
     }
     /**
      * mutasi id perekrut

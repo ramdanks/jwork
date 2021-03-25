@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Jobseeker
-comment0.text=\r\n\ @Author\:\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @Version\:\ 210318\r\n\ \r\n\ Kelas\ untuk\ menyimpan\ data\ pencari\ kerja\r\n
+comment0.text=\r\n\ Kelas\ untuk\ menyimpan\ data\ pencari\ kerja\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
 comment1.params=id\ name\ email\ password\ joinDate\ location
 comment1.target=Jobseeker(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Location)
 comment10.params=password
@@ -26,7 +26,7 @@ comment5.target=java.lang.String\ getPassword()
 comment5.text=\r\n\ akses\ password\ jobseeker\r\n\ @return\ String\:\ password\ jobseeker\r\n
 comment6.params=
 comment6.target=java.lang.String\ getJoinDate()
-comment6.text=\r\n\ akses\ tanggal\ bergabung\r\n\ @return\ string\:\ tanggal\ bergabung\r\n
+comment6.text=\r\n\ akses\ tanggal\ bergabung\r\n\ @return\ String\:\ tanggal\ bergabung\r\n
 comment7.params=id
 comment7.target=void\ setID(int)
 comment7.text=\r\n\ mutasi\ id\ jobseeker\r\n\ @param\ int\:\ menset\ id\ jobseeker\r\n

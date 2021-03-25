@@ -1,9 +1,8 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210318
-* 
-* Kelas untuk menyimpan informasi faktur
-*/
+ * Kelas untuk menyimpan informasi faktur
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 
 public class Invoice
 {
@@ -26,35 +25,35 @@ public class Invoice
      * @return int: nomor id faktur
      */
     public int getId() {
-        return this.id;
+        return id;
     }
     /**
      * akses id job faktur
      * @return int: nomor id pekerjaan dalam faktur
      */
     public int getIdJob() {
-        return this.idJob;
+        return idJob;
     }
     /**
      * akses tanggal faktur
      * @return String: tanggal faktur
      */
     public String getDate() {
-        return this.date;
+        return date;
     }
     /**
      * akses total tagihan faktur
      * @return int: jumlah tagihan
      */
     public int getTotalFee() {
-        return this.totalFee;
+        return totalFee;
     }
     /**
      * akses jobseeker
      * @return Jobseeker: jobseeker
      */
     public Jobseeker getJobseeker() {
-        return this.jobseeker;
+        return jobseeker;
     }
     /**
      * mutasi id faktur

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=DatabaseJob
-comment0.text=\r\n\ @Author\:\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @Version\:\ 210318\r\n\ \r\n\ Kelas\ untuk\ menyimpan\ list\ pekerjaan\ yang\ tersedia\r\n
+comment0.text=\r\n\ Kelas\ yang\ menyimpan\ list\ pekerjaan\ yang\ tersedia\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
 comment1.params=
 comment1.target=DatabaseJob()
 comment2.params=job

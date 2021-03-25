@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Invoice
-comment0.text=\r\n\ @Author\:\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @Version\:\ 210318\r\n\ \r\n\ Kelas\ untuk\ menyimpan\ informasi\ faktur\r\n
+comment0.text=\r\n\ Kelas\ untuk\ menyimpan\ informasi\ faktur\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
 comment1.params=id\ idJob\ date\ totalFee\ jobseeker
 comment1.target=Invoice(int,\ int,\ java.lang.String,\ int,\ Jobseeker)
 comment10.params=totalFee

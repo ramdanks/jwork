@@ -1,9 +1,8 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210318
-* 
-* Kelas untuk menyimpan list pekerjaan yang tersedia
-*/
+ * Kelas yang menyimpan list pekerjaan yang tersedia
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 
 public class DatabaseJob
 {
@@ -39,6 +38,6 @@ public class DatabaseJob
      * @return String[]: list job
      */
     public static String[] getListJob() {
-        return DatabaseJob.listJob;
+        return listJob;
     }
 }

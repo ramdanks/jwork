@@ -1,7 +1,7 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210320
-*/
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210320
+ */
 
 public class JWork
 {

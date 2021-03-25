@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Recruiter
-comment0.text=\r\n\ @Author\:\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @Version\:\ 210318\r\n\ \r\n\ Kelas\ untuk\ menyimpan\ informasi\ perekrut\ kerja\r\n
+comment0.text=\r\n\ Kelas\ untuk\ menyimpan\ informasi\ perekrut\ kerja\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
 comment1.params=id\ name\ email\ phoneNumber\ location
 comment1.target=Recruiter(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Location)
 comment10.params=phoneNumber

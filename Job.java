@@ -1,9 +1,8 @@
 /**
-* @Author: Ramadhan Kalih Sewu (1806148826)
-* @Version: 210319
-* 
-* Kelas untuk menyimpan informasi tentang entri kerja
-*/
+ * Kelas untuk menyimpan informasi tentang entri kerja
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 
 public class Job
 {
@@ -26,35 +25,35 @@ public class Job
      * @return int: id job
      */
     public int getId(){
-        return this.id;
+        return id;
     }
     /**
      * akses nama job
      * @return String: nama job
      */
     public String getName() {
-        return this.name;
+        return name;
     }
     /**
      * akses bayaran/upah/gaji job
      * @return int: gaji job
      */
     public int getFee() {
-        return this.fee;
+        return fee;
     }
     /**
      * akses kategori job
      * @return String: kategori job
      */
     public String getCategory() {
-        return this.category;
+        return category;
     }
     /**
      * akses recruiter
      * @return Recruiter: recruiter
      */
     public Recruiter getRecruiter() {
-        return this.recruiter;
+        return recruiter;
     }
     /**
      * mutasi id job
