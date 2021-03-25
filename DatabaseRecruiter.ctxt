@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=DatabaseRecruiter
 comment0.text=\r\n\ Kelas\ yang\ menyimpan\ seluruh\ database\ recruiter\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
-comment1.params=
-comment1.target=DatabaseRecruiter()
+comment1.params=recruiter
+comment1.target=boolean\ addRecruiter(Recruiter)
+comment1.text=\r\n\ menambah\ entri\ Recruiter\ kedalam\ database\r\n\ @param\ Recruiter\:\ Recruiter\r\n\ @return\ boolean\:\r\n
 comment2.params=recruiter
-comment2.target=boolean\ addRecruiter(Recruiter)
-comment3.params=recruiter
-comment3.target=boolean\ removerRecruiter(Recruiter)
+comment2.target=boolean\ removerRecruiter(Recruiter)
+comment2.text=\r\n\ menghapus\ entri\ Recruiter\ kedalam\ database\r\n\ @param\ Recruiter\:\ Recruiter\r\n\ @return\ boolean\:\r\n
+comment3.params=
+comment3.target=Recruiter\ getRecruiter()
+comment3.text=\r\n\ meminta\ Recruiter\ dari\ database\r\n\ @return\ Recruiter\:\ Recruiter\r\n
 comment4.params=
-comment4.target=Recruiter\ getRecruiter()
-comment5.params=
-comment5.target=java.lang.String[]\ getListRecruiter()
-numComments=6
+comment4.target=java.lang.String[]\ getListRecruiter()
+comment4.text=\r\n\ meminta\ seluruh\ Recruiter\ yang\ tercatat\ dalam\ database\r\n\ @return\ String[]\:\ list\ Recruiter\r\n
+numComments=5

@@ -10,10 +10,10 @@ public class Job
     private String name;
     private Recruiter recruiter;
     private int fee;
-    private String category;
+    private JobCategory category;
     
     public Job(int id, String name, Recruiter recruiter, int fee,
-                String category) {
+                JobCategory category) {
         this.id = id;
         this.name = name;
         this.recruiter = recruiter;
@@ -45,7 +45,7 @@ public class Job
      * akses kategori job
      * @return String: kategori job
      */
-    public String getCategory() {
+    public JobCategory getCategory() {
         return category;
     }
     /**
@@ -87,18 +87,19 @@ public class Job
      * mutasi kategori job
      * @param String: kategori job
      */
-    public void setCategory(String category) {
+    public void setCategory(JobCategory category) {
         this.category = category;
     }
     /**
      * mencetak informasi job ke terminal
      */
     public void printData() {
-        System.out.println("[Job]");
-        System.out.println("id       : " + this.id);
-        System.out.println("name     : " + this.name);
-        System.out.println("recruiter: " + this.recruiter.getName());
-        System.out.println("fee      : " + this.fee);
-        System.out.println("category : " + this.category);
+        System.out.println("====== Job ======");
+        System.out.println("ID       : " + this.id);
+        System.out.println("Name     : " + this.name);
+        System.out.println("Recruiter: " + this.recruiter.getName());
+        System.out.println("City     : " + this.recruiter.getLocation().getCity());
+        System.out.println("Fee      : " + this.fee);
+        System.out.println("Category : " + this.category.toString());
     }
 }

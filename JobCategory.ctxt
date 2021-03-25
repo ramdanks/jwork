@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=JobCategory
+comment0.text=\r\n\ Kelas\ enumerasi\ untuk\ memberikan\ kategori\ pada\ class\ Job\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
+comment1.params=name
+comment1.target=JobCategory(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

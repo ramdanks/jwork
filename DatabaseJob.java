@@ -8,10 +8,9 @@ public class DatabaseJob
 {
     private static String[] listJob;
     
-    public DatabaseJob() {}
     /**
-     * menambah entri job kedalam database
-     * @param Job: job
+     * menambah entri Job kedalam database
+     * @param Job: Job
      * @return boolean:
      */
     public static boolean addJob(Job job) {
@@ -19,22 +18,22 @@ public class DatabaseJob
         return false;
     }
     /**
-     * menghapus entri job kedalam database
-     * @param Job: job
+     * menghapus entri Job kedalam database
+     * @param Job: Job
      * @return boolean:
      */
     public static boolean removeJob(Job job) {
         return false;
     }
     /**
-     * meminta job dari database
-     * @return Job: job
+     * meminta Job dari database
+     * @return Job: Job
      */
     public static Job getJob() {
         return null;
     }
     /**
-     * meminta seluruh list yang tercatat dalam database
+     * meminta seluruh Job yang tercatat dalam database
      * @return String[]: list job
      */
     public static String[] getListJob() {

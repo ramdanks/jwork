@@ -8,17 +8,34 @@ public class DatabaseRecruiter
 {
     private static String[] listRecruiter;
     
-    public DatabaseRecruiter() {}
+    /**
+     * menambah entri Recruiter kedalam database
+     * @param Recruiter: Recruiter
+     * @return boolean:
+     */
     public static boolean addRecruiter(Recruiter recruiter) {
         System.out.println("Recruiter ditambahkan ke Database");
         return false;
     }
+    /**
+     * menghapus entri Recruiter kedalam database
+     * @param Recruiter: Recruiter
+     * @return boolean:
+     */
     public static boolean removerRecruiter(Recruiter recruiter) {
         return false;
     }
+    /**
+     * meminta Recruiter dari database
+     * @return Recruiter: Recruiter
+     */
     public static Recruiter getRecruiter() {
         return null;
     }
+    /**
+     * meminta seluruh Recruiter yang tercatat dalam database
+     * @return String[]: list Recruiter
+     */
     public static String[] getListRecruiter() {
         return listRecruiter;
     }
