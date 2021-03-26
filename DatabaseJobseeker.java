@@ -17,11 +17,11 @@ public class DatabaseJobseeker
         return false;
     }
     /**
-     * menghapus entri Jobseeker kedalam database
+     * menghapus entri Jobseeker dari database
      * @param Jobseeker: Jobseeker
      * @return boolean:
      */
-    public static boolean removeJobseeker() {
+    public static boolean removeJobseeker(Jobseeker jobseeker) {
         return false;
     }
     /**

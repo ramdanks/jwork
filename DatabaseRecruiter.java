@@ -22,7 +22,7 @@ public class DatabaseRecruiter
      * @param Recruiter: Recruiter
      * @return boolean:
      */
-    public static boolean removerRecruiter(Recruiter recruiter) {
+    public static boolean removeRecruiter(Recruiter recruiter) {
         return false;
     }
     /**
