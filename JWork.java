@@ -15,7 +15,7 @@ public class JWork
         Recruiter rc = new Recruiter(2, "Geraldy", "g@ui.ac.id", "1234", loc);
         Job job = new Job(69, "Tester", rc, 70000, JobCategory.BackEnd);
 
-        Invoice inv = new Invoice(1, 2, "27-03-2021", 500000, js, type, status);
+        Invoice inv = new Invoice(1, job.getId(), "27-03-2021", job.getFee(), js, type, status);
 
         inv.printData();
 
