@@ -11,14 +11,19 @@ public class Invoice
     private String date;
     private int totalFee;
     private Jobseeker jobseeker;
+    private PaymentType paymentType;
+    private InvoiceStatus status;
     
     public Invoice(int id, int idJob, String date, int totalFee,
-                    Jobseeker jobseeker) {
+                    Jobseeker jobseeker, PaymentType paymentType,
+                    InvoiceStatus status) {
         this.id = id;
         this.idJob = idJob;
         this.date = date;
         this.totalFee = totalFee;
         this.jobseeker = jobseeker;
+        this.paymentType = paymentType;
+        this.status = status;
     }
     /**
      * akses id faktur
@@ -56,6 +61,20 @@ public class Invoice
         return jobseeker;
     }
     /**
+     * akses tipe pembayaran
+     * @return PaymentType: paymentType
+     */
+    public PaymentType getPaymentType() {
+        return paymentType;
+    }
+    /**
+     * akses status faktur / invoice
+     * @return InvoiceStatus: status
+     */
+    public InvoiceStatus getInvoiceStatus() {
+        return status;
+    }
+    /**
      * mutasi id faktur
      * @param int: menset id faktur
      */
@@ -91,16 +110,31 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     /**
+     * mutasi tipe pembayaran
+     * @param PaymentType: menset paymentType
+     */
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
+    }
+    /**
+     * mutasi status faktur / invoice
+     * @param InvoiceStatus: menset status
+     */
+    public void setInvoiceStatus(InvoiceStatus status) {
+        this.status = status;
+    }
+    /**
      * mencetak seluruh informasi faktur ke terminal
      */
     public void printData() {
         // Melakukan pencetakan kepada console (terminal)
         // tentang setiap data yang tercatat pada faktur
-        System.out.println("[Invoice]");
-        System.out.println("id       : " + this.id);
-        System.out.println("idJob    : " + this.idJob);
-        System.out.println("date     : " + this.date);
-        System.out.println("totalFee : " + this.totalFee);
-        System.out.println("jobseeker: " + this.jobseeker.getName());
+        System.out.println("====== Invoice ======");
+        System.out.println("ID     : " + this.id);
+        System.out.println("ID Job : " + this.idJob);
+        System.out.println("Date   : " + this.date);
+        System.out.println("Seeker : " + this.jobseeker.getName());
+        System.out.println("Fee    : " + this.totalFee);
+        System.out.println("Status : " + this.status.toString());
     }
 }

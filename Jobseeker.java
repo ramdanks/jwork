@@ -11,10 +11,9 @@ public class Jobseeker
     private String email;
     private String password;
     private String joinDate;
-    private Location location;
     
-    public Jobseeker(int id, String name, String email, String password,
-                    String joinDate, Location location) {
+    public Jobseeker(int id, String name, String email,
+                    String password, String joinDate) {
         this.id = id;
         this.name = name;
         this.email = email;

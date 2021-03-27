@@ -6,9 +6,18 @@
 public class JWork
 {
     public static void main(String[] args) {
-        Location rloc = new Location("Jawa Barat", "Depok", "Lahir");
-        Recruiter rec = new Recruiter(69, "Ramadhan", "ramadhan.kalih@ui.ac.id", "0812", rloc);
-        Job job = new Job(1, "Programmer", rec, 10000, JobCategory.DataScientist);
-        job.printData();
+
+        InvoiceStatus status = InvoiceStatus.OnGoing;
+        PaymentType type = PaymentType.BankPayment;
+
+        Location loc = new Location("DKI Jakarta", "Jakarta Timur", "Kantor");
+        Jobseeker js = new Jobseeker(1, "Ramadhan", "r@ui.ac.id", "pass", "27-03-2021");
+        Recruiter rc = new Recruiter(2, "Geraldy", "g@ui.ac.id", "1234", loc);
+        Job job = new Job(69, "Tester", rc, 70000, JobCategory.BackEnd);
+
+        Invoice inv = new Invoice(1, 2, "27-03-2021", 500000, js, type, status);
+
+        inv.printData();
+
     }
 }
