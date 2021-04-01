@@ -1,29 +1,25 @@
 /**
  * Kelas untuk menyimpan informasi faktur
  * @author Ramadhan Kalih Sewu (1806148826)
- * @version 210325
+ * @version 010421
  */
 
-public class Invoice
+public abstract class Invoice
 {
     private int id;
-    private int idJob;
+    private Job job;
     private String date;
-    private int totalFee;
+    protected int totalFee;
     private Jobseeker jobseeker;
-    private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus invoiceStatus;
     
-    public Invoice(int id, int idJob, String date, int totalFee,
-                    Jobseeker jobseeker, PaymentType paymentType,
-                    InvoiceStatus status) {
+    public Invoice(int id, Job job, String date,
+                    Jobseeker jobseeker, InvoiceStatus invoiceStatus) {
         this.id = id;
-        this.idJob = idJob;
+        this.job = job;
         this.date = date;
-        this.totalFee = totalFee;
         this.jobseeker = jobseeker;
-        this.paymentType = paymentType;
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
     /**
      * akses id faktur
@@ -33,11 +29,11 @@ public class Invoice
         return id;
     }
     /**
-     * akses id job faktur
-     * @return int: nomor id pekerjaan dalam faktur
+     * akses job pada faktur
+     * @return Job: class Job
      */
-    public int getIdJob() {
-        return idJob;
+    public Job getJob() {
+        return job;
     }
     /**
      * akses tanggal faktur
@@ -64,15 +60,13 @@ public class Invoice
      * akses tipe pembayaran
      * @return PaymentType: paymentType
      */
-    public PaymentType getPaymentType() {
-        return paymentType;
-    }
+    public abstract PaymentType getPaymentType();
     /**
      * akses status faktur / invoice
      * @return InvoiceStatus: status
      */
     public InvoiceStatus getInvoiceStatus() {
-        return status;
+        return invoiceStatus;
     }
     /**
      * mutasi id faktur
@@ -82,11 +76,11 @@ public class Invoice
         this.id = id;
     }
     /**
-     * mutasi id job faktur
-     * @param int: menset id job faktur
+     * mutasi job faktur
+     * @param Job: menset job pada faktur
      */
-    public void setIdJobs(int idJob) {
-        this.idJob = idJob;
+    public void setJob(Job job) {
+        this.job = job;
     }
     /**
      * mutasi tanggal faktur
@@ -96,12 +90,9 @@ public class Invoice
         this.date = date;
     }
     /**
-     * mutasi total tagihan faktur
-     * @param int: menset total tagihan
+     * mutasi atau perbarui jumlah bayaran
      */
-    public void setTotalFee(int totalFee) {
-        this.totalFee = totalFee;
-    }
+    public abstract void setTotalFee();
     /**
      * mutasi jobseeker
      * @param Jobseeker: menset jobseeker
@@ -110,31 +101,14 @@ public class Invoice
         this.jobseeker = jobseeker;
     }
     /**
-     * mutasi tipe pembayaran
-     * @param PaymentType: menset paymentType
-     */
-    public void setPaymentType(PaymentType paymentType) {
-        this.paymentType = paymentType;
-    }
-    /**
      * mutasi status faktur / invoice
      * @param InvoiceStatus: menset status
      */
     public void setInvoiceStatus(InvoiceStatus status) {
-        this.status = status;
+        this.invoiceStatus = status;
     }
     /**
      * mencetak seluruh informasi faktur ke terminal
      */
-    public void printData() {
-        // Melakukan pencetakan kepada console (terminal)
-        // tentang setiap data yang tercatat pada faktur
-        System.out.println("====== Invoice ======");
-        System.out.println("ID     : " + this.id);
-        System.out.println("ID Job : " + this.idJob);
-        System.out.println("Date   : " + this.date);
-        System.out.println("Seeker : " + this.jobseeker.getName());
-        System.out.println("Fee    : " + this.totalFee);
-        System.out.println("Status : " + this.status.toString());
-    }
+    public abstract void printData();
 }
