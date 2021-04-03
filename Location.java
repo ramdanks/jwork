@@ -10,6 +10,7 @@ public class Location
     private String city;
     private String description;
     
+    /** ctor untuk inisialisasi variable */
     public Location(String province, String city, String description) {
         this.province = province;
         this.city = city;
@@ -57,9 +58,7 @@ public class Location
     public void setDescription(String description) {
         this.description = description;
     }
-    /**
-     * mencetak lokasi provinsi ke terminal
-     */
+    /** mencetak lokasi provinsi ke terminal */
     public void printData() {
         System.out.println(this.province);
     }

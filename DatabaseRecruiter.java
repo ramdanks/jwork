@@ -6,6 +6,7 @@
 
 public class DatabaseRecruiter
 {
+    /** menyimpan list Recruiter dari namanya */
     private static String[] listRecruiter;
     
     /**

@@ -13,6 +13,7 @@ public abstract class Invoice
     private Jobseeker jobseeker;
     private InvoiceStatus invoiceStatus;
     
+    /** ctor untuk inisialisasi variable */
     public Invoice(int id, Job job, String date,
                     Jobseeker jobseeker, InvoiceStatus invoiceStatus) {
         this.id = id;
@@ -89,9 +90,7 @@ public abstract class Invoice
     public void setDate(String date) {
         this.date = date;
     }
-    /**
-     * mutasi atau perbarui jumlah bayaran
-     */
+    /** memperbarui nilai total fee */
     public abstract void setTotalFee();
     /**
      * mutasi jobseeker
@@ -107,8 +106,6 @@ public abstract class Invoice
     public void setInvoiceStatus(InvoiceStatus status) {
         this.invoiceStatus = status;
     }
-    /**
-     * mencetak seluruh informasi faktur ke terminal
-     */
+    /** mencetak seluruh informasi faktur ke terminal */
     public abstract void printData();
 }

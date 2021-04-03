@@ -6,6 +6,7 @@
 
 public class DatabaseJob
 {
+    /** menyimpan list Job dari namanya*/
     private static String[] listJob;
     
     /**

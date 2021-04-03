@@ -12,6 +12,7 @@ public class Jobseeker
     private String password;
     private String joinDate;
     
+    /** ctor untuk inisialisasi variable */
     public Jobseeker(int id, String name, String email,
                     String password, String joinDate) {
         this.id = id;
@@ -90,9 +91,7 @@ public class Jobseeker
     public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
     }
-    /**
-     * mencetak nama jobseeker ke terminal
-     */
+    /** mencetak nama jobseeker ke terminal */
     public void printData() {
         System.out.println(this.name);
     }

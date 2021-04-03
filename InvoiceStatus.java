@@ -10,11 +10,14 @@ public enum InvoiceStatus {
     Finished("Finished"),
     Cancelled("Cancelled");
 
+    /** representasi enum berupa string */
     private String name;
     
+    /** ctor insiasi nama enum dengan string */
     private InvoiceStatus(String name) {
         this.name = name;
     }
+    /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
     }

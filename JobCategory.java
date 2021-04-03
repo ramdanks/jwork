@@ -16,11 +16,14 @@ public enum JobCategory
     DataScientist("Data Scientist"),
     DataAnalyst("Data Analyst");
     
+    /** representasi enum berupa string */
     private String name;
     
+    /** ctor insiasi nama enum dengan string */
     private JobCategory(String name) {
         this.name = name;
     }
+    /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
     }

@@ -12,6 +12,7 @@ public class Recruiter
     private String phoneNumber;
     private Location location;
     
+    /** ctor untuk insialisasi variable */
     public Recruiter(int id, String name, String email,
                     String phoneNumber, Location location) {
         this.id = id;

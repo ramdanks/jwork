@@ -12,6 +12,7 @@ public class Job
     private int fee;
     private JobCategory category;
     
+    /** ctor untuk inisialisasi variable */
     public Job(int id, String name, Recruiter recruiter, int fee,
                 JobCategory category) {
         this.id = id;
@@ -90,9 +91,7 @@ public class Job
     public void setCategory(JobCategory category) {
         this.category = category;
     }
-    /**
-     * mencetak informasi job ke terminal
-     */
+    /** mencetak informasi job ke terminal */
     public void printData() {
         System.out.println("====== Job ======");
         System.out.println("ID       : " + this.id);
