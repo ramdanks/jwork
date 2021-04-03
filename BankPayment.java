@@ -36,7 +36,7 @@ public class BankPayment extends Invoice
     }
     public void printData() {
          // Print data secara keseluruhan
-         System.out.println("====== Ewallet Payment ======");
+         System.out.println("====== Bank Payment ======");
          System.out.println("ID           : " + getId());
          System.out.println("Job          : " + getJob().getName());
          System.out.println("Date         : " + getDate());
