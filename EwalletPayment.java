@@ -39,8 +39,6 @@ public class EwalletPayment extends Invoice
         }
     }
     public void printData() {
-        // Jumlahkan total fee dengan extra fee pada Bonus
-        int sumFee = super.totalFee + bonus.getExtraFee();
         // Print data secara keseluruhan
         System.out.println("====== Ewallet Payment ======");
         System.out.println("ID           : " + getId());
@@ -52,7 +50,7 @@ public class EwalletPayment extends Invoice
             super.getTotalFee() > bonus.getMinTotalFee()) {
             System.out.println("Referral Code: " + bonus.getReferralCode());
         }
-        System.out.println("Fee          : " + sumFee);
+        System.out.println("Fee          : " + totalFee);
         System.out.println("Status       : " + getInvoiceStatus().toString());
         System.out.println("Payment Type : " + PAYMENT_TYPE.toString());
     }
