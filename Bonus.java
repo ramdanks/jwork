@@ -91,14 +91,12 @@ public class Bonus
     public void setActive(boolean active) {
         this.active = active;
     }
-    /** mencetak informasi bonus ke terminal */
-    public void printData() {
-        System.out.println( "====== Bonus ======" +
-                            "\nID         : " + id +
-                            "\nReferral   : " + referralCode +
-                            "\nExtraFee   : " + extraFee +
-                            "\nMinTotalFee: " + minTotalFee +
-                            "\nActive     : " + active
-        );
+    public String toString() {
+        return  "============ BONUS ============" +
+                "\nId = " + id +
+                "\nReferral Code = " + referralCode +
+                "\nExtra Fee = " + extraFee +
+                "\nMin Total Fee = " + minTotalFee +
+                "\nActive Status = " + active;
     }
 }

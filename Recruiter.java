@@ -91,10 +91,11 @@ public class Recruiter
     public void setLocation(Location location) {
         this.location = location;
     }
-    /**
-     * mencetak nama perekrut ke terminal
-     */
-    public void printData() {
-        System.out.println(this.name);
+    public String toString() {
+        return  "============ RECRUITER ============" +
+                "\nId = " + id +
+                "\nName = " + name +
+                "\nPhoneNumber = " + phoneNumber +
+                "\nLocation = " + location.getCity();
     }
 }

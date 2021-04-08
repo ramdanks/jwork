@@ -58,9 +58,10 @@ public class Location
     public void setDescription(String description) {
         this.description = description;
     }
-    /** mencetak lokasi provinsi ke terminal */
-    public void printData() {
-        System.out.println(this.province);
+    public String toString() {
+        return  "============ LOCATION ============" +
+                "\nProvince = " + province +
+                "\nCity = " + city +
+                "\nDescription = " + description;
     }
-
 }

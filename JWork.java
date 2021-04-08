@@ -4,27 +4,25 @@
  */
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class JWork
 {
     public static void main(String[] args) {
 
-        String date = "01-04-2021";
-        InvoiceStatus status = InvoiceStatus.Finished;
+        Calendar cal = new GregorianCalendar(2021, 4, 8);
 
-        Jobseeker js = new Jobseeker(100, "Ramadhan", "@ui", "1234", date);
-        Location loc = new Location("Jawa Barat", "Depok", "Tempat Kerja");
-        Recruiter rc = new Recruiter(2, "Geraldy", "g@ui.ac.id", "1234", loc);
-        Job job = new Job(69, "Tester", rc, 70000, JobCategory.BackEnd);
+        ArrayList<Jobseeker> arrJS = new ArrayList<Jobseeker>();
+        arrJS.add(new Jobseeker(1, "Yogie", ".yogie.wisesa@ui.ac.id", "admin1234", cal));
+        arrJS.add(new Jobseeker(1, "Ramadhan", "ramadhanks1@gmail.com", "Power69Ranger", 2021, 1, 1));
+        arrJS.add(new Jobseeker(1, "Ailsa", "ailsa.sy@ui.ac.id", "aaaIIIIssHHAA"));
 
-        ArrayList<BankPayment> arrEP = new ArrayList<BankPayment>();
-        arrEP.add(new BankPayment(1, job, date, js, status));
-        arrEP.add(new BankPayment(2, job, date, js, status, 1000));
+        arrJS.forEach((js) -> { System.out.println(js.toString()); });
 
-        arrEP.forEach((ep) -> {
-            ep.setTotalFee();
-            ep.printData();
-        });
+        Jobseeker jsChange = arrJS.get(0);
+        jsChange.setEmail("yogie.wisesa@gmail.com");
+        jsChange.setPassword("123@#PaSs");
+        System.out.println(jsChange.toString());
     }
 }

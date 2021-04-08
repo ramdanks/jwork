@@ -91,14 +91,13 @@ public class Job
     public void setCategory(JobCategory category) {
         this.category = category;
     }
-    /** mencetak informasi job ke terminal */
-    public void printData() {
-        System.out.println("====== Job ======");
-        System.out.println("ID       : " + this.id);
-        System.out.println("Name     : " + this.name);
-        System.out.println("Recruiter: " + this.recruiter.getName());
-        System.out.println("City     : " + this.recruiter.getLocation().getCity());
-        System.out.println("Fee      : " + this.fee);
-        System.out.println("Category : " + this.category.toString());
+    public String toString() {
+        return  "============ JOB ============" +
+                "\nId = " + id +
+                "\nName = " + name +
+                "\nRecruiter = " + recruiter.getName() +
+                "\nCity = " + recruiter.getLocation().getCity() +
+                "\nFee = " + fee +
+                "\nCategory = " + category.toString();
     }
 }

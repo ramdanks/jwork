@@ -1,3 +1,10 @@
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 /**
  * Kelas untuk menyimpan data pencari kerja
  * @author Ramadhan Kalih Sewu (1806148826)
@@ -10,16 +17,35 @@ public class Jobseeker
     private String name;
     private String email;
     private String password;
-    private String joinDate;
+    private Calendar joinDate;
     
     /** ctor untuk inisialisasi variable */
     public Jobseeker(int id, String name, String email,
-                    String password, String joinDate) {
+                    String password, Calendar joinDate) {
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
+        this.setEmail(email);
+        this.setPassword(password);
         this.joinDate = joinDate;
+    }
+    /** ctor untuk inisialisasi variable */
+    public Jobseeker(int id, String name, String email,
+                    String password, int year, int month,
+                    int dayOfMonth) {
+        this.id = id;
+        this.name = name;
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setJoinDate(year, month, dayOfMonth);
+    }
+    /** ctor untuk inisialisasi variable */
+    public Jobseeker(int id, String name, String email,
+                    String password) {
+        this.id = id;
+        this.name = name;
+        this.setEmail(email);
+        this.setPassword(password);
+        this.joinDate = new GregorianCalendar();
     }
     /**
      * akses nomor id entri jobseeker
@@ -53,7 +79,7 @@ public class Jobseeker
      * akses tanggal bergabung
      * @return String: tanggal bergabung
      */
-    public String getJoinDate() {
+    public Calendar getJoinDate() {
         return joinDate;
     }
     /**
@@ -75,24 +101,46 @@ public class Jobseeker
      * @param int: menset id jobseeker
      */
     public void setEmail(String email) {
-        this.email = email;
+        Pattern pt = Pattern.compile("[^\\.\\W].*@[\\w]{1}[-\\w\\S].*$");
+        Matcher mt = pt.matcher(email);
+        if (mt.matches()) {
+            this.email = email;
+            return;
+        }
+        this.email = "";
     }
     /**
      * mutasi password jobseeker
      * @param int: menset password jobseeker
      */
     public void setPassword(String password) {
-        this.password = password;
+        Pattern pt = Pattern.compile("^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$");
+        Matcher mt = pt.matcher(password);
+        if (mt.matches()) {
+            this.password = password;
+            return;
+        }
+        this.password = "";
     }
     /**
      * mutasi waktu bergabung
      * @param int: menset waktu bergabung jobseeker
      */
-    public void setJoinDate(String joinDate) {
+    public void setJoinDate(Calendar joinDate) {
         this.joinDate = joinDate;
     }
-    /** mencetak nama jobseeker ke terminal */
-    public void printData() {
-        System.out.println(this.name);
+    public void setJoinDate(int year, int month, int dayOfMonth) {
+        this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
+    }
+    public String toString() {
+        Date date = joinDate.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String strDate = dateFormat.format(date);
+        return  "============ JOBSEEKER ============" +
+                "\nId = " + id +
+                "\nName = " + name +
+                "\nEmail = " + email +
+                "\nPassword = " + password +
+                "\nJoin Date = " + strDate;
     }
 }
