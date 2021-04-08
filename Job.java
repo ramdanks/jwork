@@ -91,6 +91,10 @@ public class Job
     public void setCategory(JobCategory category) {
         this.category = category;
     }
+    /**
+     * mengakses atribut yang ada dalam kelas
+     * @return String seluruh informasi pada kelas
+     */
     public String toString() {
         return  "============ JOB ============" +
                 "\nId = " + id +

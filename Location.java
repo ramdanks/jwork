@@ -58,6 +58,10 @@ public class Location
     public void setDescription(String description) {
         this.description = description;
     }
+    /**
+     * mengakses atribut yang ada dalam kelas
+     * @return String seluruh informasi pada kelas
+     */
     public String toString() {
         return  "============ LOCATION ============" +
                 "\nProvince = " + province +

@@ -91,6 +91,10 @@ public class Recruiter
     public void setLocation(Location location) {
         this.location = location;
     }
+    /**
+     * mengakses atribut yang ada dalam kelas
+     * @return String seluruh informasi pada kelas
+     */
     public String toString() {
         return  "============ RECRUITER ============" +
                 "\nId = " + id +

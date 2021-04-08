@@ -19,7 +19,7 @@ public class Jobseeker
     private String password;
     private Calendar joinDate;
     
-    /** ctor untuk inisialisasi variable */
+    /** ctor untuk inisialisasi variable dengan tanggal bergabung*/
     public Jobseeker(int id, String name, String email,
                     String password, Calendar joinDate) {
         this.id = id;
@@ -28,7 +28,7 @@ public class Jobseeker
         this.setPassword(password);
         this.joinDate = joinDate;
     }
-    /** ctor untuk inisialisasi variable */
+    /** ctor untuk inisialisasi variable dengan tanggal bergabung*/
     public Jobseeker(int id, String name, String email,
                     String password, int year, int month,
                     int dayOfMonth) {
@@ -38,7 +38,9 @@ public class Jobseeker
         this.setPassword(password);
         this.setJoinDate(year, month, dayOfMonth);
     }
-    /** ctor untuk inisialisasi variable */
+    /** ctor untuk inisialisasi variable tanpa tanggal bergabung
+     *  default akan bernilai waktu epoch
+     */
     public Jobseeker(int id, String name, String email,
                     String password) {
         this.id = id;
@@ -77,31 +79,31 @@ public class Jobseeker
     }
     /**
      * akses tanggal bergabung
-     * @return String: tanggal bergabung
+     * @return Calendar tanggal bergabung
      */
     public Calendar getJoinDate() {
         return joinDate;
     }
     /**
      * mutasi id jobseeker
-     * @param int: menset id jobseeker
+     * @param int menset id jobseeker
      */
     public void setID(int id) {
         this.id = id;
     }
     /**
      * mutasi nama jobseeker
-     * @param int: menset id jobseeker
+     * @param int menset id jobseeker
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
      * mutasi email jobseeker
-     * @param int: menset id jobseeker
+     * @param int menset id jobseeker
      */
     public void setEmail(String email) {
-        Pattern pt = Pattern.compile("[^\\.\\W].*@[\\w]{1}[-\\w\\S].*$");
+        Pattern pt = Pattern.compile("^(?!.*([.])\\1)[^.-][a-zA-Z0-9.&*_~]+@[^-. ][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*");
         Matcher mt = pt.matcher(email);
         if (mt.matches()) {
             this.email = email;
@@ -111,7 +113,7 @@ public class Jobseeker
     }
     /**
      * mutasi password jobseeker
-     * @param int: menset password jobseeker
+     * @param int menset password jobseeker
      */
     public void setPassword(String password) {
         Pattern pt = Pattern.compile("^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$");
@@ -124,14 +126,24 @@ public class Jobseeker
     }
     /**
      * mutasi waktu bergabung
-     * @param int: menset waktu bergabung jobseeker
+     * @param Calendar menset waktu bergabung jobseeker
      */
     public void setJoinDate(Calendar joinDate) {
         this.joinDate = joinDate;
     }
+    /**
+     * mutasi waktu bergabung
+     * @param int year = tahun bergabung
+     * @param int month = bulan bergabung
+     * @param int dayOfMonth = hari begabung
+     */
     public void setJoinDate(int year, int month, int dayOfMonth) {
         this.joinDate = new GregorianCalendar(year, month, dayOfMonth);
     }
+    /**
+     * mengakses atribut yang ada dalam kelas
+     * @return String seluruh informasi pada kelas
+     */
     public String toString() {
         Date date = joinDate.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
