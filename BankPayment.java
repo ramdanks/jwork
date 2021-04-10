@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * Kelas menyimpan informasi faktur pembayaran bank
  * @author Ramadhan Kalih Sewu (1806148826)
@@ -13,15 +16,15 @@ public class BankPayment extends Invoice
     private int adminFee;
     
     /** ctor tanpa tarif admin */
-    public BankPayment(int id, Job job, String date, Jobseeker jobseeker,
+    public BankPayment(int id, Job job, Jobseeker jobseeker,
                         InvoiceStatus invoiceStatus) {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.adminFee = 0;
     }
     /** ctor dengan tarif admin */
-    public BankPayment(int id, Job job, String date, Jobseeker jobseeker,
+    public BankPayment(int id, Job job, Jobseeker jobseeker,
                         InvoiceStatus invoiceStatus, int adminFee) {
-        super(id, job, date, jobseeker, invoiceStatus);
+        super(id, job, jobseeker, invoiceStatus);
         this.adminFee = adminFee;
     }
     /**
@@ -53,16 +56,22 @@ public class BankPayment extends Invoice
         }
     }
     /** mencetak informasi pembayaran bank ke terminal */
-    public void printData() {
+    public String toString() {
+        Calendar date = getDate();
+        String strDate = "";
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            strDate = dateFormat.format(date);
+        }
          // Print data secara keseluruhan
-         System.out.println("====== Bank Payment ======");
-         System.out.println("ID           : " + getId());
-         System.out.println("Job          : " + getJob().getName());
-         System.out.println("Date         : " + getDate());
-         System.out.println("Seeker       : " + getJobseeker().getName());
-         System.out.println("Admin Fee    : " + adminFee);
-         System.out.println("Fee          : " + totalFee);
-         System.out.println("Status       : " + getInvoiceStatus().toString());
-         System.out.println("Payment Type : " + PAYMENT_TYPE.toString());
+         return     "====== Bank Payment ======" +
+                    "\nID           : " + getId() +
+                    "\nJob          : " + getJob().getName() +
+                    "\nDate         : " + strDate +
+                    "\nSeeker       : " + getJobseeker().getName() +
+                    "\nAdmin Fee    : " + adminFee +
+                    "\nFee          : " + totalFee +
+                    "\nStatus       : " + getInvoiceStatus().toString() +
+                    "\nPayment Type : " + PAYMENT_TYPE.toString();
     }
 }

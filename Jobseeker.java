@@ -39,7 +39,7 @@ public class Jobseeker
         this.name = name;
         setEmail(email);
         setPassword(password);
-        this.setJoinDate(year, month, dayOfMonth);
+        setJoinDate(year, month, dayOfMonth);
     }
     /** ctor untuk inisialisasi variable tanpa tanggal bergabung
      *  default akan bernilai waktu epoch

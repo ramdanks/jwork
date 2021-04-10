@@ -1,3 +1,7 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.time.LocalDate;
+
 /**
  * Kelas untuk menyimpan informasi faktur
  * @author Ramadhan Kalih Sewu (1806148826)
@@ -8,19 +12,20 @@ public abstract class Invoice
 {
     private int id;
     private Job job;
-    private String date;
+    private Calendar date;
     protected int totalFee;
     private Jobseeker jobseeker;
     private InvoiceStatus invoiceStatus;
     
     /** ctor untuk inisialisasi variable */
-    public Invoice(int id, Job job, String date,
-                    Jobseeker jobseeker, InvoiceStatus invoiceStatus) {
+    public Invoice(int id, Job job, Jobseeker jobseeker,
+                    InvoiceStatus invoiceStatus) {
         this.id = id;
         this.job = job;
-        this.date = date;
         this.jobseeker = jobseeker;
         this.invoiceStatus = invoiceStatus;
+        LocalDate localDate = LocalDate.now();
+        setDate(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
     }
     /**
      * akses id faktur
@@ -40,7 +45,7 @@ public abstract class Invoice
      * akses tanggal faktur
      * @return String: tanggal faktur
      */
-    public String getDate() {
+    public Calendar getDate() {
         return date;
     }
     /**
@@ -87,8 +92,11 @@ public abstract class Invoice
      * mutasi tanggal faktur
      * @param String: menset tanggal faktur
      */
-    public void setDate(String date) {
+    public void setDate(Calendar date) {
         this.date = date;
+    }
+    public void setDate(int year, int month, int dayOfMonth) {
+        date = new GregorianCalendar(year, month-1, dayOfMonth);
     }
     /** memperbarui nilai total fee */
     public abstract void setTotalFee();
@@ -107,5 +115,5 @@ public abstract class Invoice
         this.invoiceStatus = status;
     }
     /** mencetak seluruh informasi faktur ke terminal */
-    public abstract void printData();
+    public abstract String toString();
 }
