@@ -19,10 +19,10 @@ public class JWork
         Recruiter rec = new Recruiter(1, "Geraldy", "g@ui.ac.id", "12312031", loc);
         Job job = new Job(1, "Tester", rec, 10000, JobCategory.BackEnd);
 
-        ArrayList<Invoice> arrInv = new ArrayList<Invoice>();
-        arrInv.add(new EwalletPayment(1, job, js, bonus, InvoiceStatus.OnGoing));
-        arrInv.add(new BankPayment(1, job, js, InvoiceStatus.OnGoing));
+        EwalletPayment ew  = new EwalletPayment(1, job, js, bonus, InvoiceStatus.OnGoing);
+        BankPayment bp = new BankPayment(1, job, js, InvoiceStatus.OnGoing);
 
-        arrInv.forEach((inv) -> { System.out.println(inv.toString()); });
+        System.out.println(ew.toString());
+        System.out.println(bp.toString());
     }
 }

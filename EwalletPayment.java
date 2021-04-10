@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Kelas menyimpan informasi faktur pembayarnan ewallet (cashless)
@@ -58,7 +59,7 @@ public class EwalletPayment extends Invoice
     }
     /** mencetak informasi pembayaran ewallet ke terminal */
     public String toString() {
-        Calendar date = getDate();
+        Date date = getDate().getTime();
         String strDate = "";
         if (date != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");

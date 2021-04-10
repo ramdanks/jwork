@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Kelas menyimpan informasi faktur pembayaran bank
@@ -57,7 +58,7 @@ public class BankPayment extends Invoice
     }
     /** mencetak informasi pembayaran bank ke terminal */
     public String toString() {
-        Calendar date = getDate();
+        Date date = getDate().getTime();
         String strDate = "";
         if (date != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
