@@ -151,7 +151,7 @@ public class Jobseeker
         String strDate = "";
         if (joinDate != null) {
             Date date = joinDate.getTime();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
             strDate = dateFormat.format(date);
         }
         return  "============ JOBSEEKER ============" +

@@ -24,8 +24,7 @@ public abstract class Invoice
         this.job = job;
         this.jobseeker = jobseeker;
         this.invoiceStatus = invoiceStatus;
-        LocalDate localDate = LocalDate.now();
-        setDate(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth());
+        date = Calendar.getInstance();
     }
     /**
      * akses id faktur

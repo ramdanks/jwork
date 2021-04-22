@@ -61,7 +61,7 @@ public class BankPayment extends Invoice
         Date date = getDate().getTime();
         String strDate = "";
         if (date != null) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
             strDate = dateFormat.format(date);
         }
          // Print data secara keseluruhan
