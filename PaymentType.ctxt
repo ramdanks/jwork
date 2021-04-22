@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=PaymentType
-comment0.text=\r\n\ Enumeration\ class\ PaymentType\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ @author\ Ramadhan\ Kalih\ Sewu\ (1806148826)\r\n\ @version\ 210325\r\n
-comment1.params=name
-comment1.target=PaymentType(java.lang.String)
-comment2.params=
-comment2.target=java.lang.String\ toString()
-numComments=3
