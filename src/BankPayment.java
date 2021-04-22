@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,15 +18,13 @@ public class BankPayment extends Invoice
     private int adminFee;
     
     /** ctor tanpa tarif admin */
-    public BankPayment(int id, Job job, Jobseeker jobseeker,
-                        InvoiceStatus invoiceStatus) {
-        super(id, job, jobseeker, invoiceStatus);
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker) {
+        super(id, jobs, jobseeker);
         this.adminFee = 0;
     }
     /** ctor dengan tarif admin */
-    public BankPayment(int id, Job job, Jobseeker jobseeker,
-                        InvoiceStatus invoiceStatus, int adminFee) {
-        super(id, job, jobseeker, invoiceStatus);
+    public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, int adminFee) {
+        super(id, jobs, jobseeker);
         this.adminFee = adminFee;
     }
     /**
@@ -51,7 +50,7 @@ public class BankPayment extends Invoice
     }
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
-        totalFee = getJob().getFee();
+        //totalFee = getJob().getFee();
         if (adminFee != 0) {
             totalFee -= adminFee;
         }
@@ -67,7 +66,7 @@ public class BankPayment extends Invoice
          // Print data secara keseluruhan
          return     "====== Bank Payment ======" +
                     "\nID           : " + getId() +
-                    "\nJob          : " + getJob().getName() +
+                    "\nJobs         : " + getJobs() +
                     "\nDate         : " + strDate +
                     "\nSeeker       : " + getJobseeker().getName() +
                     "\nAdmin Fee    : " + adminFee +

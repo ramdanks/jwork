@@ -25,7 +25,7 @@ public class Recruiter
      * akses nomor id perekrut
      * @return int: nomor id perekrut
      */
-    public int getID() {
+    public int getId() {
         return id;
     }
     /**

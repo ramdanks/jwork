@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,15 +18,14 @@ public class EwalletPayment extends Invoice
     private Bonus bonus;
 
     /** ctor tanpa bonus */
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker,
-                        InvoiceStatus invoiceStatus) {
-        super(id, job, jobseeker, invoiceStatus);
+    public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker) {
+        super(id, jobs, jobseeker);
         this.bonus = null;
     }
     /** ctor dengan bonus */
-    public EwalletPayment(int id, Job job, Jobseeker jobseeker,
-                        Bonus bonus, InvoiceStatus invoiceStatus) {
-        super(id, job, jobseeker, invoiceStatus);
+    public EwalletPayment(int id, ArrayList<Job> job, Jobseeker jobseeker,
+                        Bonus bonus) {
+        super(id, job, jobseeker);
         this.bonus = bonus;
     }
     /**
@@ -51,7 +51,7 @@ public class EwalletPayment extends Invoice
     }
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
-        super.totalFee = getJob().getFee();
+        //super.totalFee = getJob().getFee();
         if (bonus != null && bonus.getActive() &&
             getTotalFee() > bonus.getMinTotalFee()) {
             super.totalFee += bonus.getExtraFee();
@@ -68,7 +68,7 @@ public class EwalletPayment extends Invoice
         // Print data secara keseluruhan
         String str =    "====== Ewallet Payment ======" +
                         "\nID           : " + getId() +
-                        "\nJob          : " + getJob().getName() +
+                        "\nJobs         : " + getJobs() +
                         "\nDate         : " + strDate +
                         "\nSeeker       : " + getJobseeker().getName();
         // Hanya tampilkan referral code kalau bonusnya aktif atau valid

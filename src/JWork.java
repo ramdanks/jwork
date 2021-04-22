@@ -13,16 +13,37 @@ public class JWork
     public static void main(String[] args) {
 
         Calendar cal = new GregorianCalendar(2021, 4, 8);
-        Jobseeker js = new Jobseeker(1, "Ramadhan", "ramadhanks1@gmail.com", "Power69Ranger", 2021, 1, 1);
-        Bonus bonus = new Bonus(1, "RS12JD", 1000, 10000, true);
-        Location loc = new Location("Jawa Barat", "Depok", "Kerja");
-        Recruiter rec = new Recruiter(1, "Geraldy", "g@ui.ac.id", "12312031", loc);
-        Job job = new Job(1, "Tester", rec, 10000, JobCategory.BackEnd);
+        Location loc = new Location("Jawa Barat", "Depok", "Headquarter FB");
 
-        EwalletPayment ew  = new EwalletPayment(1, job, js, bonus, InvoiceStatus.OnGoing);
-        BankPayment bp = new BankPayment(1, job, js, InvoiceStatus.OnGoing);
+        {
+            Recruiter rec = new Recruiter(0, "Mark Zuckerberg", "g@ui.ac.id", "12312031", loc);     
+            DatabaseRecruiter.addRecruiter(rec);  
+        }
+       
+        Jobseeker js1 = new Jobseeker(0, "Ramadhan", "ramadhanks1@gmail.com", "Power69Ranger", 2021, 1, 1);
+        Jobseeker js2 = new Jobseeker(1, "Ramadhan", "ramadhanks1@gmail.com", "Power69Ranger", 2021, 1, 1);
+        Jobseeker js3 = new Jobseeker(2, "Geraldy", "geraldy@ui.ac.id", "Power69Ranger", 2021, 1, 1);
+        DatabaseJobseeker.addJobseeker(js1);
+        DatabaseJobseeker.addJobseeker(js2);
+        DatabaseJobseeker.addJobseeker(js3);
 
-        System.out.println(ew.toString());
-        System.out.println(bp.toString());
+        {
+            ArrayList<Jobseeker> test = DatabaseJobseeker.getDatabaseJobseeker();
+            for (Jobseeker js : test)
+                System.out.println(js.toString());
+        }
+
+        Job job1 = new Job(0, "Hosting dan Maintenance", DatabaseRecruiter.getRecruiterById(0), 10000, JobCategory.BackEnd);
+        Job job2 = new Job(1, "Database Builder", DatabaseRecruiter.getRecruiterById(0), 10000, JobCategory.BackEnd);
+        Job job3 = new Job(2, "Membangun Web", DatabaseRecruiter.getRecruiterById(0), 10000, JobCategory.FrontEnd);
+        DatabaseJob.addJob(job1);
+        DatabaseJob.addJob(job2);
+        DatabaseJob.addJob(job3);
+
+        {
+            ArrayList<Job> test = DatabaseJob.getJobByCategory(JobCategory.BackEnd);
+            for (Job j : test)
+                System.out.println(j.toString());
+        }
     }
 }
