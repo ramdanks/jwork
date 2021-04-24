@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.time.LocalDate;
 
 /**
  * Kelas untuk menyimpan informasi faktur
  * @author Ramadhan Kalih Sewu (1806148826)
- * @version 010421
+ * @version 210424
  */
 
 public abstract class Invoice
@@ -110,8 +109,8 @@ public abstract class Invoice
      * mutasi status faktur / invoice
      * @param InvoiceStatus: menset status
      */
-    public void setInvoiceStatus(InvoiceStatus status) {
-        this.invoiceStatus = status;
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus) {
+        this.invoiceStatus = invoiceStatus;
     }
     /** mencetak seluruh informasi faktur ke terminal */
     public abstract String toString();
