@@ -50,7 +50,13 @@ public class EwalletPayment extends Invoice
     }
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
-        //super.totalFee = getJob().getFee();
+        // perbarui total fee dengan fee jobs yang ada
+        super.totalFee = 0;
+        for(Job j : getJobs())
+            super.totalFee += j.getFee();
+        // tambahkan total fee dengan bonus jika memenuhi criteria
+        // 1. bonus ada dan aktif
+        // 2. bonus min total fee lebih dari total fee invoice
         if (bonus != null && bonus.getActive() &&
             getTotalFee() > bonus.getMinTotalFee()) {
             super.totalFee += bonus.getExtraFee();

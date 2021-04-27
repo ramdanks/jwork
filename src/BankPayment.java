@@ -49,9 +49,11 @@ public class BankPayment extends Invoice
     }
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
+        // perbarui total fee dengan fee jobs yang ada
         this.totalFee = 0;
         for (Job j : getJobs())
             this.totalFee += j.getFee();
+        // tambahkan total fee jika ada admin fee
         if (getAdminFee() != 0)
             this.totalFee += getAdminFee();
     }
