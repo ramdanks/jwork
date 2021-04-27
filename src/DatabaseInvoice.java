@@ -33,8 +33,6 @@ public class DatabaseInvoice
         return list;
     }
     public static boolean addInvoice(Invoice invoice) {
-        if (invoice.getInvoiceStatus() == InvoiceStatus.OnGoing)
-            return false;
         for (Invoice i : INVOICE_DATABASE)
             if (i.getId() == invoice.getId())
                 return false;
@@ -43,11 +41,12 @@ public class DatabaseInvoice
         return true;
     }
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus) {
-        for (int i = 0; i < INVOICE_DATABASE.size(); i++)
+        //Looping for Checking the input
+        for (Invoice invoice : INVOICE_DATABASE)
         {
-            if (INVOICE_DATABASE.get(i).getId() == id)
+            if(invoice.getId() == id && invoice.getInvoiceStatus() == InvoiceStatus.OnGoing)
             {
-                INVOICE_DATABASE.get(i).setInvoiceStatus(invoiceStatus);
+                invoice.setInvoiceStatus(invoiceStatus);
                 return true;
             }
         }

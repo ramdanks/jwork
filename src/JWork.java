@@ -44,8 +44,10 @@ public class JWork
         {
             int lastId = DatabaseJobseeker.getLastId();
             ArrayList<Invoice> list = DatabaseInvoice.getInvoiceByJobseeker(lastId);
-            for (Invoice i : list)
-                i.setTotalFee();
+            if (list != null) {
+                for (Invoice i : list)
+                    i.setTotalFee();
+            }
         }
 
         {
@@ -55,8 +57,10 @@ public class JWork
         {
             int lastId = DatabaseJobseeker.getLastId();
             ArrayList<Invoice> list = DatabaseInvoice.getInvoiceByJobseeker(lastId);
-            for (Invoice i : list)
-                i.setTotalFee();
+            if (list != null) {
+                for (Invoice i : list)
+                    i.setTotalFee();
+            }
         }
 
         {
@@ -68,8 +72,10 @@ public class JWork
         {
             int lastId = DatabaseJobseeker.getLastId();
             ArrayList<Invoice> list = DatabaseInvoice.getInvoiceByJobseeker(lastId);
-            for (Invoice i : list)
-                i.setInvoiceStatus(InvoiceStatus.Finished);
+            if (list != null) {
+                for (Invoice i : list)
+                    i.setInvoiceStatus(InvoiceStatus.Finished);
+            }
         }
 
         {

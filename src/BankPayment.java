@@ -1,6 +1,5 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -50,10 +49,11 @@ public class BankPayment extends Invoice
     }
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
-        //totalFee = getJob().getFee();
-        if (adminFee != 0) {
-            totalFee -= adminFee;
-        }
+        this.totalFee = 0;
+        for (Job j : getJobs())
+            this.totalFee += j.getFee();
+        if (getAdminFee() != 0)
+            this.totalFee += getAdminFee();
     }
     /** mencetak informasi pembayaran bank ke terminal */
     public String toString() {
