@@ -27,11 +27,11 @@ public class DatabaseJob
      * @param int id milik job
      * @return Job: Job
      */
-    public static Job getJobById(int id) {
+    public static Job getJobById(int id) throws JobNotFoundException {
         for (Job j : JOB_DATABASE)
             if (j.getId() == id)
                 return j;
-        return null;
+        throw new JobNotFoundException(id);
     }
     public static ArrayList<Job> getJobByRecruiter(int recruiterId) {
         ArrayList<Job> jobs = new ArrayList<Job>();
@@ -69,7 +69,7 @@ public class DatabaseJob
      * @param Job: Job
      * @return boolean:
      */
-    public static boolean removeJob(int id) {
+    public static boolean removeJob(int id) throws JobNotFoundException {
         for (int i = 0; i < JOB_DATABASE.size(); i++)
         {
             if (JOB_DATABASE.get(i).getId() == id)
@@ -78,6 +78,6 @@ public class DatabaseJob
                 return true;
             }
         }
-        return false;
+        throw new JobNotFoundException(id);
     }
 }

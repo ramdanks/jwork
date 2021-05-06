@@ -22,11 +22,11 @@ public class DatabaseBonus
     public static int getLastId() {
         return lastId;
     }
-    public static Bonus getBonusById(int id) {
+    public static Bonus getBonusById(int id) throws BonusNotFoundException {
         for (Bonus b : BONUS_DATABASE)
             if (b.getId() == id)
                 return b;
-        return null;
+        throw new BonusNotFoundException(id);
     }
     public static Bonus getBonusByReferralCode(String referralCode) {
         for (Bonus b : BONUS_DATABASE)
@@ -39,17 +39,19 @@ public class DatabaseBonus
      * @param Bonus
      * @return boolean
      */
-    public static boolean addBonus(Bonus bonus) {
+    public static boolean addBonus(Bonus bonus) throws ReferralCodeAlreadyExistsException {
         for (Bonus b : BONUS_DATABASE)
         {
-            if (b.getId() == bonus.getId()) return false;
-            if (b.getReferralCode() == bonus.getReferralCode()) return false;
+            if (b.getId() == bonus.getId())
+                return false;
+            if (b.getReferralCode() == bonus.getReferralCode()) 
+                throw new ReferralCodeAlreadyExistsException(bonus);
         }
         BONUS_DATABASE.add(bonus);
         lastId = bonus.getId();
         return true;
     }
-    public static boolean removeBonus(int id) {
+    public static boolean removeBonus(int id) throws BonusNotFoundException {
         for (int i = 0; i < BONUS_DATABASE.size(); i++)
         {
             if (BONUS_DATABASE.get(i).getId() == id)
@@ -58,7 +60,7 @@ public class DatabaseBonus
                 return true;
             }
         }
-        return false;
+        throw new BonusNotFoundException(id);
     }
     public static boolean activeBonus(int id) {
         for (int i = 0; i < BONUS_DATABASE.size(); i++)

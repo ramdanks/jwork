@@ -41,7 +41,6 @@ public class DatabaseInvoice
         return true;
     }
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus) {
-        //Looping for Checking the input
         for (Invoice invoice : INVOICE_DATABASE)
         {
             if(invoice.getId() == id && invoice.getInvoiceStatus() == InvoiceStatus.OnGoing)

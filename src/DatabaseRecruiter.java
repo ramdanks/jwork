@@ -27,11 +27,11 @@ public class DatabaseRecruiter
      * @param int id
      * @return Recruiter Recruiter
      */
-    public static Recruiter getRecruiterById(int id) {
+    public static Recruiter getRecruiterById(int id) throws RecruiterNotFoundException {
         for (Recruiter r : RECRUITER_DATABASE)
             if (r.getId() == id)
                 return r;
-        return null;
+        throw new RecruiterNotFoundException(id);
     }
     /**
      * menambah entri Recruiter kedalam database
@@ -51,7 +51,7 @@ public class DatabaseRecruiter
      * @param int id milik Recruiter
      * @return boolean:
      */
-    public static boolean removeRecruiter(int id) {
+    public static boolean removeRecruiter(int id) throws RecruiterNotFoundException {
         for (int i = 0; i < RECRUITER_DATABASE.size(); i++)
         {
             if (RECRUITER_DATABASE.get(i).getId() == id)
@@ -60,7 +60,7 @@ public class DatabaseRecruiter
                 return true;
             }
         }
-        return false;
+        throw new RecruiterNotFoundException(id);
     }
 
 }

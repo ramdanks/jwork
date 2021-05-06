@@ -11,90 +11,102 @@ public class JWork
 {
     public static void main(String[] args) {
 
-        ArrayList<Job> list1 = new ArrayList<Job>();
-        ArrayList<Job> list2 = new ArrayList<Job>();
-
+        // Tugas 8: EmailAlreadyExistsException
         {
-            DatabaseBonus.addBonus(new Bonus(0, "MYCODE", 1000, 10000, false));
-            DatabaseBonus.addBonus(new Bonus(1, "MYCODE", 1000, 10000, true));
-        }
-
-        {
-            ArrayList<Bonus> list = DatabaseBonus.getBonusDatabase();
-            for (Bonus b : list)
-                System.out.println(b.toString());
-        }
-
-        {
-            Jobseeker js1 = new Jobseeker(0, "Ramadhan", "ramadhanks1@gmail.com", "Power69Ranger", 2021, 1, 1);
-            Jobseeker js2 = new Jobseeker(1, "Ramadhan", "ramadhanks1@gmail.com", "Power69Ranger", 2021, 1, 1);
-            Jobseeker js3 = new Jobseeker(2, "Geraldy", "geraldy@ui.ac.id", "Power69Ranger", 2021, 1, 1);
-            DatabaseJobseeker.addJobseeker(js1);
-            DatabaseJobseeker.addJobseeker(js2);
-            DatabaseJobseeker.addJobseeker(js3);
-        }
-
-        {
-            list1.add(new Job(0, "Hosting dan Maintenance", DatabaseRecruiter.getRecruiterById(0), 20000, JobCategory.BackEnd));
-            list2.add(new Job(1, "Database Builder", DatabaseRecruiter.getRecruiterById(0), 5000, JobCategory.FrontEnd));
-        
-            DatabaseInvoice.addInvoice(new EwalletPayment(0, list1, DatabaseJobseeker.getJobseekerById(1), DatabaseBonus.getBonusById(1)));
-        }
-
-        {
-            int lastId = DatabaseJobseeker.getLastId();
-            ArrayList<Invoice> list = DatabaseInvoice.getInvoiceByJobseeker(lastId);
-            if (list != null) {
-                for (Invoice i : list)
-                    i.setTotalFee();
-            }
-        }
-
-        {
-            DatabaseInvoice.addInvoice(new BankPayment(1, list2, DatabaseJobseeker.getJobseekerById(1)));
-        }
-        
-        {
-            int lastId = DatabaseJobseeker.getLastId();
-            ArrayList<Invoice> list = DatabaseInvoice.getInvoiceByJobseeker(lastId);
-            if (list != null) {
-                for (Invoice i : list)
-                    i.setTotalFee();
-            }
-        }
-
-        {
-            ArrayList<Invoice> list = DatabaseInvoice.getInvoiceDatabase();
-            for (Invoice i : list)
-                System.out.println(i.toString());
-        }
-
-        {
-            int lastId = DatabaseJobseeker.getLastId();
-            ArrayList<Invoice> list = DatabaseInvoice.getInvoiceByJobseeker(lastId);
-            if (list != null) {
-                for (Invoice i : list)
-                    i.setInvoiceStatus(InvoiceStatus.Finished);
-            }
-        }
-
-        {
-            DatabaseInvoice.addInvoice(new EwalletPayment(1, list1, DatabaseJobseeker.getJobseekerById(2), DatabaseBonus.getBonusById(1)));
-        }
-
-        {
-            ArrayList<Bonus> list = DatabaseBonus.getBonusDatabase();
-            for (Bonus b : list)
-                b.setActive(true);
-        }
-
-        {
-            ArrayList<Invoice> list = DatabaseInvoice.getInvoiceDatabase();
-            for (Invoice i : list)
+            ArrayList<Jobseeker> list = new ArrayList<Jobseeker>();
+            list.add(new Jobseeker(1, "Ramadhan", "rama@ui.ac.id", "Passw0rd1"));
+            list.add(new Jobseeker(2, "Geraldy", "geraldy@ui.ac.id", "Passw0rd1"));
+            list.add(new Jobseeker(3, "Ailsa", "ailsa@ui.ac.id", "Passw0rd1"));
+            list.add(new Jobseeker(4, "Hacker", "email@ui.ac.id", "Passw0rd1"));
+            list.add(new Jobseeker(5, "Yogie", "email@ui.ac.id", "Passw0rd1"));
+    
+            for (Jobseeker j : list)
             {
-                i.setTotalFee();
-                System.out.println(i.toString());
+                try {
+                    DatabaseJobseeker.addJobseeker(j);
+                } catch (EmailAlreadyExistsException e) {
+                    System.out.println(e.getMessage());
+                }
             }
+        }
+
+        // Tugas 8: ReferralCodeAlreadyExistsException
+        {
+            ArrayList<Bonus> list = new ArrayList<Bonus>();
+            list.add(new Bonus(1, "MYCODE", 10000, 20000, true));
+            list.add(new Bonus(2, "MYCODE", 50000, 80000, false));
+            for (Bonus b : list)
+            {
+                try {
+                    DatabaseBonus.addBonus(b);
+                } catch (ReferralCodeAlreadyExistsException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        
+        // Tugas 8: Remaining Exception
+        {
+            try {
+                Jobseeker js = DatabaseJobseeker.getJobseekerById(9);
+            } catch (JobseekerNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                Recruiter js = DatabaseRecruiter.getRecruiterById(9);
+            } catch (RecruiterNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                Job js = DatabaseJob.getJobById(9);
+            } catch (JobNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                Bonus js = DatabaseBonus.getBonusById(9);
+            } catch (BonusNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        // Tugas 8: Data yang masuk ke Database
+        {
+            ArrayList<Bonus> listBonus = DatabaseBonus.getBonusDatabase();
+            ArrayList<Jobseeker> listJS = DatabaseJobseeker.getDatabaseJobseeker();
+
+            for (Bonus b : listBonus)
+                System.out.println(b);
+            
+            for (Jobseeker js : listJS)
+                System.out.println(js);
+        }
+
+        // Tugas 9: Implementasi Threading
+        {
+            try {
+
+                Jobseeker js1 = DatabaseJobseeker.getJobseekerById(1);
+                Jobseeker js2 = DatabaseJobseeker.getJobseekerById(2);
+                Jobseeker js3 = DatabaseJobseeker.getJobseekerById(3);
+
+                Location l = new Location("California", "Silicon Valley", "Headquarter");
+                Recruiter r = new Recruiter(1, "Mark Zuckerberg", "mark@facebook.com", "0123123", l);
+                DatabaseJob.addJob(new Job(1, "Facebook UI Designer", r, 120000, JobCategory.UI));
+    
+                DatabaseInvoice.addInvoice(new BankPayment(1, DatabaseJob.getJobDatabase(), js1));
+                DatabaseInvoice.addInvoice(new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
+                DatabaseInvoice.addInvoice(new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
+
+            } catch (JobseekerNotFoundException e) {
+                System.out.print(e.getMessage());
+                return;
+            }
+   
+            Thread myThread = new Thread(new FeeCalculator());
+            myThread.start();
         }
     }
 }
