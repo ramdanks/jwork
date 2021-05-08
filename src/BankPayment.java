@@ -68,7 +68,7 @@ public class BankPayment extends Invoice
          // Print data secara keseluruhan
          return     "====== Bank Payment ======" +
                     "\nID           : " + getId() +
-                    "\nJobs         : " + getJobs() +
+                    "\nJobs         : " + getJobs().size() +
                     "\nDate         : " + strDate +
                     "\nSeeker       : " + getJobseeker().getName() +
                     "\nAdmin Fee    : " + adminFee +

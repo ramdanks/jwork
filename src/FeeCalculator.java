@@ -11,5 +11,4 @@ public class FeeCalculator implements Runnable
             System.out.println("finish calculating invoice id: " + i.getId());
         }
     }
-
 }

@@ -84,29 +84,43 @@ public class JWork
                 System.out.println(js);
         }
 
-        // Tugas 9: Implementasi Threading
+        // Post Test
         {
             try {
-
                 Jobseeker js1 = DatabaseJobseeker.getJobseekerById(1);
                 Jobseeker js2 = DatabaseJobseeker.getJobseekerById(2);
-                Jobseeker js3 = DatabaseJobseeker.getJobseekerById(3);
-
-                Location l = new Location("California", "Silicon Valley", "Headquarter");
-                Recruiter r = new Recruiter(1, "Mark Zuckerberg", "mark@facebook.com", "0123123", l);
-                DatabaseJob.addJob(new Job(1, "Facebook UI Designer", r, 120000, JobCategory.UI));
-    
-                DatabaseInvoice.addInvoice(new BankPayment(1, DatabaseJob.getJobDatabase(), js1));
-                DatabaseInvoice.addInvoice(new BankPayment(2, DatabaseJob.getJobDatabase(), js2));
-                DatabaseInvoice.addInvoice(new BankPayment(3, DatabaseJob.getJobDatabase(), js3));
+                
+                BankPayment bp1 = new BankPayment(1, DatabaseJob.getJobDatabase(), js1);
+                bp1.setInvoiceStatus(InvoiceStatus.Cancelled);
+                BankPayment bp2 = new BankPayment(2, DatabaseJob.getJobDatabase(), js2);
+                DatabaseInvoice.addInvoice(bp1); // status invoice: Cancelled (no exception)
+                DatabaseInvoice.addInvoice(bp2); // status invoice: OnGoing (trigger exception)
 
             } catch (JobseekerNotFoundException e) {
                 System.out.print(e.getMessage());
                 return;
+            } catch (OngoingInvoiceAlreadyExistsException e) {
+                System.out.println(e.getMessage());
             }
-   
-            Thread myThread = new Thread(new FeeCalculator());
-            myThread.start();
+
+            // Trigger InvoiceNotFoundException 
+            try {
+                DatabaseInvoice.removeInvoice(99);
+            } catch (InvoiceNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+            // Trigger InvoiceNotFoundException 
+            try {
+                DatabaseInvoice.getInvoiceById(99);
+            } catch (InvoiceNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+            
+            // Print data yang berhasil masuk ke database
+            ArrayList<Invoice> list = DatabaseInvoice.getInvoiceDatabase();
+            for (Invoice i : list)
+                System.out.println(i);
         }
     }
 }
