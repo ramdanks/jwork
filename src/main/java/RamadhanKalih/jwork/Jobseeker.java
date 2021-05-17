@@ -1,9 +1,3 @@
-/**
- * Kelas untuk menyimpan data pencari kerja
- * @author Ramadhan Kalih Sewu (1806148826)
- * @version 210325
- */
-
 package RamadhanKalih.jwork;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+/** Kelas untuk menyimpan data pencari kerja
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 public class Jobseeker
 {
     private int id;

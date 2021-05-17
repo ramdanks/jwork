@@ -1,15 +1,13 @@
-/**
- * Kelas menyimpan informasi faktur pembayaran bank
- * @author Ramadhan Kalih Sewu (1806148826)
- * @version 030421
- * @inheritDoc
- */
-
 package RamadhanKalih.jwork;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/** Kelas menyimpan informasi faktur pembayaran bank
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210517
+ * @inheritDoc
+ */
 public class BankPayment extends Invoice 
 {
     /** tipe pembayaran sesuai enum @PaymentType */
@@ -43,7 +41,7 @@ public class BankPayment extends Invoice
     }
     /**
      * mutasi tarif administrasi
-     * @param int
+     * @param adminFee
      */
     public void setAdminFee(int adminFee) {
         this.adminFee = adminFee;
@@ -58,7 +56,7 @@ public class BankPayment extends Invoice
         if (getAdminFee() != 0)
             this.totalFee += getAdminFee();
     }
-    /** mencetak informasi pembayaran bank ke terminal */
+    /** mengembalikan seluruh informasi yang disimpan dalam kelas */
     public String toString() {
         Date date = getDate().getTime();
         String strDate = "";

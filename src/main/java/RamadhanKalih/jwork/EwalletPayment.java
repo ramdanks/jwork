@@ -1,15 +1,13 @@
-/**
- * Kelas menyimpan informasi faktur pembayarnan ewallet (cashless)
- * @author Ramadhan Kalih Sewu (1806148826)
- * @version 010421
- * @inheritDoc
- */
-
 package RamadhanKalih.jwork;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/** Kelas menyimpan informasi faktur pembayarnan ewallet (cashless)
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 010421
+ * @inheritDoc
+ */
 public class EwalletPayment extends Invoice
 {
     /** tipe pembayaran sesuai enum @PaymentType */

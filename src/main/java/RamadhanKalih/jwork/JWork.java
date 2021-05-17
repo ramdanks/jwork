@@ -1,8 +1,3 @@
-/**
- * @author Ramadhan Kalih Sewu (1806148826)
- * @version 210517
- */
-
 package RamadhanKalih.jwork;
 
 import org.springframework.boot.SpringApplication;

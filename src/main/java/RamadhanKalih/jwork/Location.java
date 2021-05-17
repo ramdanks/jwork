@@ -1,11 +1,9 @@
-/**
- * Kelas untuk menyimpan informasi lokasi
+package RamadhanKalih.jwork;
+
+/** Kelas untuk menyimpan informasi lokasi
  * @author Ramadhan Kalih Sewu (1806148826)
  * @version 210325
  */
-
-package RamadhanKalih.jwork;
-
 public class Location
 {
     private String province;

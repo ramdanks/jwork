@@ -1,14 +1,12 @@
-/**
- * Kelas untuk menyimpan informasi faktur
- * @author Ramadhan Kalih Sewu (1806148826)
- * @version 210424
- */
-
 package RamadhanKalih.jwork;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/** Kelas untuk menyimpan informasi faktur
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210424
+ */
 public abstract class Invoice
 {
     private int id;

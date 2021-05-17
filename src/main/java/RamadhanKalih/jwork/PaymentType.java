@@ -1,13 +1,10 @@
+package RamadhanKalih.jwork;
 
-/**
- * kelas enumerasi menyimpan jenis pembayaran untuk mengidentifikasi
+/** kelas enumerasi menyimpan jenis pembayaran untuk mengidentifikasi
  * subclass dari class @Invoice yaitu: @BankPayment dan @EwalletPayment
  * @author Ramadhan Kalih Sewu (1806148826)
  * @version 210325
  */
-
-package RamadhanKalih.jwork;
-
 public enum PaymentType
 {
     BankPayment("Bank Payment"),

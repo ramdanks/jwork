@@ -1,12 +1,10 @@
-/**
- * Kelas yang menyimpan seluruh database recruiter
- * @author Ramadhan Kalih Sewu (1806148826)
- * @version 210325
- */
-
 package RamadhanKalih.jwork;
 import java.util.ArrayList;
 
+/** Kelas yang menyimpan seluruh database recruiter
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210325
+ */
 public class DatabaseRecruiter
 {
     /** menyimpan list Recruiter dari namanya */

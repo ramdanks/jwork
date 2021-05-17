@@ -1,12 +1,9 @@
+package RamadhanKalih.jwork;
 
-/**
- * Kelas enumerasi untuk memberikan kategori pada class Job
+/** Kelas enumerasi untuk memberikan kategori pada class Job
  * @author Ramadhan Kalih Sewu (1806148826)
  * @version 210325
  */
-
-package RamadhanKalih.jwork;
-
 public enum JobCategory
 {
     WebDeveloper("Web Developer"),

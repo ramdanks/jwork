@@ -1,11 +1,9 @@
-/**
- * Kelas untuk menyimpan status Invoice
+package RamadhanKalih.jwork;
+
+/** Kelas untuk menyimpan status Invoice
  * @author Ramadhan Kalih Sewu (1806148826)
  * @version 210327
  */
-
-package RamadhanKalih.jwork;
-
 public enum InvoiceStatus {
     
     OnGoing("OnGoing"),

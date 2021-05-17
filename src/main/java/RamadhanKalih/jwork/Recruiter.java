@@ -1,11 +1,9 @@
-/**
- * Kelas untuk menyimpan informasi perekrut kerja
+package RamadhanKalih.jwork;
+
+/** Kelas untuk menyimpan informasi perekrut kerja
  * @author Ramadhan Kalih Sewu (1806148826)
  * @version 210325
  */
-
-package RamadhanKalih.jwork;
-
 public class Recruiter
 {
     private int id;
