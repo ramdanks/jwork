@@ -22,8 +22,8 @@ public class JWork
             DatabaseJob.addJob(new Job(1, "Kompresi Data", DatabaseRecruiter.getRecruiterById(1), 201000, JobCategory.BackEnd));
             DatabaseJob.addJob(new Job(2, "Enkripsi Data", DatabaseRecruiter.getRecruiterById(2), 105000, JobCategory.BackEnd));
             // recruiter dengan id sama
-            DatabaseJob.addJob(new Job(2, "Manage API Google", DatabaseRecruiter.getRecruiterById(3), 50000, JobCategory.WebDeveloper));
-            DatabaseJob.addJob(new Job(2, "Research Database", DatabaseRecruiter.getRecruiterById(3), 70000, JobCategory.DataAnalyst));
+            DatabaseJob.addJob(new Job(3, "Manage API Google", DatabaseRecruiter.getRecruiterById(3), 50000, JobCategory.WebDeveloper));
+            DatabaseJob.addJob(new Job(4, "Research Database", DatabaseRecruiter.getRecruiterById(3), 70000, JobCategory.DataAnalyst));
         }
         catch (RecruiterNotFoundException e) {
             return;
