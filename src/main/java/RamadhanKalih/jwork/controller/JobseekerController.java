@@ -5,37 +5,40 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/jobseeker")
 @RestController
-public class JobseekerController {
-
-    @RequestMapping("")
-    public String indexPage(@RequestParam(value="name", defaultValue="world") String name) {
-        return "Hello " + name;
-    }
+public class JobseekerController
+{
 
     @RequestMapping("/{id}")
     public Jobseeker getJobseekerById(@PathVariable int id) {
-        Jobseeker jobseeker = null;
+        Jobseeker var = null;
         try {
-            jobseeker = DatabaseJobseeker.getJobseekerById(id);
+            var = DatabaseJobseeker.getJobseekerById(id);
         } catch (JobseekerNotFoundException e) {
-            e.getMessage();
-            return null;
+            System.out.println(e.getMessage());
+            var = null;
         }
-        return jobseeker;
+        return var;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public Jobseeker addJobseeker(@RequestParam(value="name") String name,
-                                  @RequestParam(value="email") String email,
-                                  @RequestParam(value="password") String password)
+    @RequestMapping(value="/register", method = RequestMethod.POST)
+    public Jobseeker registerJobseeker( @RequestParam(value="name") String name,
+                                        @RequestParam(value="email") String email,
+                                        @RequestParam(value="password") String password)
     {
-        Jobseeker jobseeker = new Jobseeker(DatabaseJobseeker.getLastId()+1, name, email, password);
+        Jobseeker var = new Jobseeker(DatabaseJobseeker.getLastId() + 1, name, email, password);
         try {
-            DatabaseJobseeker.addJobseeker(jobseeker);
+            DatabaseJobseeker.addJobseeker(var);
         } catch (EmailAlreadyExistsException e) {
-            e.getMessage();
-            return null;
+            System.out.println(e.getMessage());
+            var = null;
         }
-        return jobseeker;
+        return var;
+    }
+
+    @RequestMapping(value="/login", method = RequestMethod.POST)
+    public Jobseeker loginJobseeker(@RequestParam(value="email") String email,
+                                    @RequestParam(value="password") String password)
+    {
+        return DatabaseJobseeker.getJobseekerLogin(email, password);
     }
 }
