@@ -61,8 +61,10 @@ public class InvoiceController
     @RequestMapping(value="/createBankPayment", method = RequestMethod.POST)
     public Invoice addBankPayment(  @RequestParam(value="jobIdList") ArrayList<Integer> jobIdList,
                                     @RequestParam(value="jobseekerId") int jobseekerId,
-                                    @RequestParam(value="adminFee") int adminFee)
+                                    @RequestParam(value="adminFee", required=false) Integer adminFee)
     {
+        if (adminFee == null)
+            adminFee = 0;
         try {
             ArrayList<Job> jobList = new ArrayList<Job>();
             for (Integer id : jobIdList)
@@ -88,8 +90,10 @@ public class InvoiceController
     @RequestMapping(value="/createEWalletPayment", method = RequestMethod.POST)
     public Invoice addEWalletPayment(   @RequestParam(value="jobIdList") ArrayList<Integer> jobIdList,
                                         @RequestParam(value="jobseekerId") int jobseekerId,
-                                        @RequestParam(value="Bonus") String Bonus)
+                                        @RequestParam(value="Bonus", required=false) String Bonus)
     {
+        if (Bonus == null)
+            Bonus = "";
         try {
             ArrayList<Job> jobList = new ArrayList<Job>();
             for (Integer id : jobIdList)
