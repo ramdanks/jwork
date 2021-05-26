@@ -26,10 +26,10 @@ public class InvoiceController
         return var;
     }
 
-    @RequestMapping(value="/Jobseeker/{JobseekerId}", method = RequestMethod.GET)
-    public ArrayList<Invoice> getInvoiceByJobseeker(@PathVariable int id)
+    @RequestMapping(value="/jobseeker/{jobseekerId}", method = RequestMethod.GET)
+    public ArrayList<Invoice> getInvoiceByJobseeker(@PathVariable int jobseekerId)
     {
-        return DatabaseInvoice.getInvoiceByJobseeker(id);
+        return DatabaseInvoice.getInvoiceByJobseeker(jobseekerId);
     }
 
     @RequestMapping(value="/invoiceStatus/", method = RequestMethod.PUT)
