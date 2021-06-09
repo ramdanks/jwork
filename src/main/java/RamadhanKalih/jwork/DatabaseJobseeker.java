@@ -48,7 +48,7 @@ public class DatabaseJobseeker
         {
             if (js.getID() == jobseeker.getID())
                 return false;
-            if (js.getEmail() == jobseeker.getEmail())
+            if (js.getEmail().equals(jobseeker.getEmail()))
                 throw new EmailAlreadyExistsException(jobseeker);
         }
         JOBSEEKER_DATABASE.add(jobseeker);

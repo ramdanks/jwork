@@ -58,9 +58,6 @@ public class DatabaseInvoice
      * @throws OngoingInvoiceAlreadyExistsException apabila status invoice OnGoing atau id yang sama sudah ada dalam database
      */
     public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException {
-        // tidak menerima invoice yang masih berstatus ongoing
-        // if (invoice.getInvoiceStatus() == InvoiceStatus.OnGoing)
-            // throw new OngoingInvoiceAlreadyExistsException(invoice);
         // tidak boleh ada invoice dengan id yang sama dalam database
         for (Invoice i : INVOICE_DATABASE)
             if (i.getId() == invoice.getId())

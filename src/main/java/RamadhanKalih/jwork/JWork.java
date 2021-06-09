@@ -29,6 +29,13 @@ public class JWork
             return;
         }
 
+        Jobseeker j = new Jobseeker(1, "Ramadhan Kalih Sewu", "ramadhan.kalih@ui.ac.id", "Ramadhan123");
+        try {
+            DatabaseJobseeker.addJobseeker(j);
+        } catch (Exception e) {
+            return;
+        }
+
         SpringApplication.run(JWork.class, args);
     }
 }
