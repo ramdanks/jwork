@@ -27,8 +27,9 @@ public class JobseekerController
     {
         Jobseeker var = new Jobseeker(DatabaseJobseeker.getLastId() + 1, name, email, password);
         try {
-            DatabaseJobseeker.addJobseeker(var);
-        } catch (EmailAlreadyExistsException e) {
+            if (!DatabaseJobseeker.addJobseeker(var))
+                throw new Exception("Object may violate constraint!");
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             var = null;
         }
