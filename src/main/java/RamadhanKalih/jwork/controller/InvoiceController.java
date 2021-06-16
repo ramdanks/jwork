@@ -81,7 +81,7 @@ public class InvoiceController
             // currently can only take one job in one invoice
             int jobId = jobIdList.get(0);
             // should only have one OnGoing job from a jobseeker
-            if (DatabaseInvoicePostgre.isExist(jobId, InvoiceStatus.OnGoing))
+            if (DatabaseInvoicePostgre.isJobExist(jobId, InvoiceStatus.OnGoing))
                 throw new Exception("Duplicate OnGoing Invoice with Job Id: " + jobId + ", Jobseeker Id: " + jobseekerId);
             Job job = DatabaseJobPostgre.getJob(jobId);
             ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
@@ -105,7 +105,7 @@ public class InvoiceController
             // currently can only take one job in one invoice
             int jobId = jobIdList.get(0);
             // should only have one OnGoing job from a jobseeker
-            if (DatabaseInvoicePostgre.isExist(jobId, InvoiceStatus.OnGoing))
+            if (DatabaseInvoicePostgre.isJobExist(jobId, InvoiceStatus.OnGoing))
                 throw new Exception("Duplicate OnGoing Invoice with Job Id: " + jobId + ", Jobseeker Id: " + jobseekerId);
             Job job = DatabaseJobPostgre.getJob(jobId);
             ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
@@ -119,22 +119,5 @@ public class InvoiceController
             System.err.println(e);
         }
         return null;
-    }
-
-    private boolean duplicateOnGoingJob(ArrayList<Invoice> jobseekerInvoiceList, Job jobApplied)
-    {
-        if (jobseekerInvoiceList == null)
-            return false;
-        for (Invoice inv : jobseekerInvoiceList)
-        {
-            // invoice berstatus selain OnGoing tidak apa-apa duplikat
-            if (inv.getInvoiceStatus() != InvoiceStatus.OnGoing)
-                continue;
-            // satu Job hanya boleh memiliki satu invoice berstatus onGoing
-            Job storedJob = inv.getJobs().get(0);
-            if (storedJob.getId() == jobApplied.getId())
-                return true;
-        }
-        return false;
     }
 }

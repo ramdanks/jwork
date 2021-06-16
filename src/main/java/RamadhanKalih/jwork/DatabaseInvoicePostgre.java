@@ -3,7 +3,6 @@ package RamadhanKalih.jwork;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLType;
 import java.sql.Date;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class DatabaseInvoicePostgre {
     private static final String Q_GET_JS        = "SELECT * FROM invoice WHERE jobseeker_id=?";
     private static final String Q_ALTER_STATUS  = "UPDATE invoice SET status=? WHERE id=?";
     private static final String Q_LASTID        = "SELECT id FROM invoice ORDER BY id DESC LIMIT 1";
-    private static final String Q_EXIST_STATUS  = "SELECT EXISTS(SELECT 1 FROM invoice WHERE id=? AND status=?)";
+    private static final String Q_EXIST_STATUS  = "SELECT EXISTS(SELECT 1 FROM invoice WHERE job_id=? AND status=?)";
 
     public static boolean insertInvoice(Invoice invoice) throws Exception {
         int bonusId = invoice.bonus == null ? -1 : invoice.bonus.getId();
@@ -106,7 +105,7 @@ public class DatabaseInvoicePostgre {
         return ps.executeUpdate() == 1;
     }
 
-    public static boolean isExist(int id, InvoiceStatus status) throws Exception {
+    public static boolean isJobExist(int id, InvoiceStatus status) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_EXIST_STATUS);
         ps.setInt(1, id);
