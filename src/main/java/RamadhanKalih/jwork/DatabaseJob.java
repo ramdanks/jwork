@@ -19,12 +19,13 @@ public class DatabaseJob
         return JOB_DATABASE;
     }
 
-    /** meminta nomor id Bonus yang terakhir berhasil masuk ke database melalui method addJob()
-     * @return int nomor id Job
+    /** meminta nomor id Bonus yang terakhir masuk ke database melalui method addJob()
+     * @return nomor id Job
      */
     public static int getLastId() {
         return lastId;
     }
+
     /** meminta Job berdasarkan id
      * @param id nomor id Job yang diminta
      * @return Job yang memiliki id sesuai parameter
@@ -39,8 +40,8 @@ public class DatabaseJob
 
     /** meminta job dalam database kelas ini
      * @param recruiterId nomor id recruiter
-     * @return ArrayList<Job> list job yang terafiliasi dengan parameter
-     * @return null jika tidak ditemukan job yang terafiliasi dengan parameter
+     * @return ArrayList<Job> list job yang terikat dengan parameter
+     * @return null jika tidak ditemukan job yang terikat dengan parameter
      */
     public static ArrayList<Job> getJobByRecruiter(int recruiterId) {
         ArrayList<Job> jobs = new ArrayList<Job>();
@@ -51,10 +52,11 @@ public class DatabaseJob
             return null;
         return jobs;
     }
+
     /** meminta job dalam database kelas ini
      * @param category kategori job yang diminta
-     * @return ArrayList<Job> list job yang terafiliasi dengan parameter
-     * @return null jika tidak ditemukan job yang terafiliasi dengan parameter
+     * @return list job yang terikat dengan parameter, 
+     * jika tidak ditemukan maka return null
      */
     public static ArrayList<Job> getJobByCategory(JobCategory category) {
         ArrayList<Job> jobs = new ArrayList<Job>();
@@ -65,7 +67,8 @@ public class DatabaseJob
             return null;
         return jobs;
     }
-    /** mencatat Job kedalam database kelas ini
+
+    /** mencatat Job kedalam database
      * @param job Job yang ingin dimasukkan
      * @return true jika berhasil
      * @return false jika nomor id Job yang sama sudah ada dalam database
@@ -78,7 +81,8 @@ public class DatabaseJob
         lastId = job.getId();
         return true;
     }
-    /** menghapus entri Job kedalam database
+
+    /** menghapus entri Job dari database
      * @param id nomor id Job yang ingin dihapus
      * @return true jika berhasil menghapus
      * @throws JobNotFoundException apabila tidak ditemukan Job sesuai permintaan parameter

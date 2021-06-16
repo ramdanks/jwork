@@ -14,6 +14,7 @@ public class ReferralCodeAlreadyExistsException extends Exception
         super("Bonus Code: ");
         bonus_error = bonus_input;
     }
+    
     /** mengembalikan keterangan kode referral bonus yang sudah terdaftar */
     public String getMessage() {
         return super.getMessage() + bonus_error.getReferralCode() + " already exists";

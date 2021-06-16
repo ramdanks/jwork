@@ -18,12 +18,14 @@ public class DatabaseBonus
     public static ArrayList<Bonus> getBonusDatabase() {
         return BONUS_DATABASE;
     }
+    
     /** meminta nomor id Bonus yang terakhir berhasil masuk ke database melalui method addBonus()
      * @return int nomor id Bonus
      */
     public static int getLastId() {
         return lastId;
     }
+
     /** meminta bonus yang tersimpan dalam database kelas ini
      * @param id nomor id Bonus
      * @return Bonus sesuai dengan permintaan parameter
@@ -35,6 +37,7 @@ public class DatabaseBonus
                 return b;
         throw new BonusNotFoundException(id);
     }
+
     /** meminta bonus yang tersimpan dalam database kelas ini
      * @param referralCode kode referal Bonus
      * @return Bonus sesuai dengan permintaan parameter
@@ -45,6 +48,7 @@ public class DatabaseBonus
                 return b;
         return null;
     }
+
     /** menyimpan bonus ke dalam database kelas ini
      * @param bonus Bonus yang ingin disimpan
      * @return boolean true jika berhasil, false jika di database terdapat Bonus dengan id yang sama
@@ -62,6 +66,7 @@ public class DatabaseBonus
         lastId = bonus.getId();
         return true;
     }
+
     /** menghapus bonus dalam database kelas ini
      * @param id nomor id Bonus yang ingin dihapus
      * @return boolean true jika berhasil menghapus Bonus yang diminta
@@ -78,9 +83,10 @@ public class DatabaseBonus
         }
         throw new BonusNotFoundException(id);
     }
+
     /** mengaktifkan status bonus dalam database kelas ini
      * @param id nomor id Bonus yang ingin diaktifkan
-     * @return boolean true jika menemukan bonus dengan parameter yang diminta, jika tidak return false
+     * @return true jika menemukan bonus dengan parameter yang diminta, jika tidak return false
      */
     public static boolean activeBonus(int id) {
         for (int i = 0; i < BONUS_DATABASE.size(); i++)
@@ -93,9 +99,10 @@ public class DatabaseBonus
         }
         return false;
     }
+
     /** menon-aktifkan status bonus dalam database kelas ini 
      * @param id nomor id Bonus yang ingin di non-aktifkan
-     * @return boolean true jika menemukan bonus dengan parameter yang diminta, jika tidak return false
+     * @return true jika menemukan bonus dengan parameter yang diminta, jika tidak return false
      */
     public static boolean deactivateBonus(int id) {
         for (int i = 0; i < BONUS_DATABASE.size(); i++)

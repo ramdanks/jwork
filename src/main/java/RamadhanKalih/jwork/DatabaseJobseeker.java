@@ -39,6 +39,7 @@ public class DatabaseJobseeker
         // throw exception if not found anywhere
         throw new JobseekerNotFoundException(id);
     }
+
     /** menambah entri Jobseeker kedalam database
      * @param jobseeker Jobseeker yang ingin dimasukkan
      * @return false jika duplikat id atau gagal memperbarui postgreSQL
@@ -58,6 +59,7 @@ public class DatabaseJobseeker
         lastId = jobseeker.getID();
         return true;
     }
+
     /** menghapus entri Jobseeker dari database
      * @param id nomor id Jobseeker yang ingin dihapus
      * @return true jika berhasil, false apabila error dalam proses ke dbms
@@ -75,6 +77,11 @@ public class DatabaseJobseeker
         throw new JobseekerNotFoundException(id);
     }
 
+    /** meminta Jobseeker dari database
+     * @param email email Jobseeker
+     * @param password password Jobseeker
+     * @return Jobseeker yang sesuai parameter, jika tidak ditemukan maka return null
+     */
     public static Jobseeker getJobseekerLogin(String email, String password) {
         // check in local cache
         for (Jobseeker js : JOBSEEKER_DATABASE)

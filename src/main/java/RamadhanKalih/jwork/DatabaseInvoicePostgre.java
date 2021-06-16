@@ -9,16 +9,34 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class DatabaseInvoicePostgre {
+/** kelas database menggunakan dbms psql untuk menyimpan Invoice
+ * @author Ramadhan Kalih Sewu (1806148826)
+ * @version 210617
+ */
+public class DatabaseInvoicePostgre
+{
+    /** query psql memasukkan Invoice ke db */
     private static final String Q_INSERT        = "INSERT INTO invoice(job_id,date,totalfee,jobseeker_id,status,bonus_id,adminfee,ptype) VALUES (?,?,?,?,?,?,?,?) RETURNING id";
+    /** query psql menghapus Invoice dari db */
     private static final String Q_REMOVE        = "DELETE FROM invoice WHERE id=?";
+    /** query psql meminta seluruh Invoice dari db */
     private static final String Q_GET_ALL       = "SELECT * FROM invoice";
+    /** query psql meminta Invoice dari db melalui nomor id */
     private static final String Q_GET_ID        = "SELECT * FROM invoice WHERE id=?";
+    /** query psql meminta Invoice dari db melalui nomor jobseeker id */
     private static final String Q_GET_JS        = "SELECT * FROM invoice WHERE jobseeker_id=?";
+    /** query psql memperbarui status Invoice dari db melalui nomor id */
     private static final String Q_ALTER_STATUS  = "UPDATE invoice SET status=? WHERE id=?";
+    /** query psql meminta nomor id Invoice terakhir dalam db */
     private static final String Q_LASTID        = "SELECT id FROM invoice ORDER BY id DESC LIMIT 1";
+    /** query psql menanyakan keberadaan Invoice dalam db dengan job id dan InvoiceStatus tertentu*/
     private static final String Q_EXIST_STATUS  = "SELECT EXISTS(SELECT 1 FROM invoice WHERE job_id=? AND status=?)";
 
+    /** memasukkan ke dalam database psql
+     * @param invoice Invoice yang ingin disimpan
+     * @return nomor id dari Invoice yang tercatat dalam psql
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static int insertInvoice(Invoice invoice) throws Exception {
         int bonusId = invoice.bonus == null ? -1 : invoice.bonus.getId();
         return insertInvoice(
@@ -32,9 +50,21 @@ public class DatabaseInvoicePostgre {
             invoice.type);
     }
 
+    /** memasukkan ke dalam database psql
+     * @param jobId job id Invoice
+     * @param date date Invoice
+     * @param totalFee total fee Invoice
+     * @param jobseekerId jobseeker (pemilik) Invoice
+     * @param status status Invoice
+     * @param bonusId bonus id Invoice
+     * @param adminFee admin fee Invoice
+     * @param type tipe pembyaran Invoice
+     * @return nomor id dari Invoice yang tercatat dalam psql
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static int insertInvoice(int jobId, Calendar date, int totalFee,
-                                        int jobseekerId, InvoiceStatus status,
-                                        int bonusId, int adminFee, PaymentType type) throws Exception {   
+                                    int jobseekerId, InvoiceStatus status,
+                                    int bonusId, int adminFee, PaymentType type) throws Exception {   
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_INSERT);
         // set null if bonus is invalid number
@@ -51,6 +81,11 @@ public class DatabaseInvoicePostgre {
         return rs.next() ? rs.getInt(1) : -1;
     }
 
+    /** menghapus Invoice dari database psql
+     * @param id nomor id dari Invoice
+     * @return true jika berhasil menghapus sesuai parameter
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static boolean removeInvoice(int id) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_REMOVE);
@@ -58,6 +93,11 @@ public class DatabaseInvoicePostgre {
         return ps.executeUpdate() == 1;
     }
 
+    /** meminta Invoice dari database psql
+     * @param id nomor id dari Invoice
+     * @return true jika ditemukan dalam database
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static Invoice getInvoice(int id) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_GET_ID);
@@ -68,6 +108,10 @@ public class DatabaseInvoicePostgre {
         return null;
     }
 
+    /** meminta seluruh Invoice dari database psql
+     * @return Invoice yang tercatat atau diterima oleh API
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static ArrayList<Invoice> getAllInvoice() throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_GET_ALL);
@@ -78,6 +122,11 @@ public class DatabaseInvoicePostgre {
         return list;
     }
 
+    /** meminta seluruh Invoice dari database psql melalui jobseeker
+     * @param id nomor id dari jobseeker
+     * @return list Invoice yang terikat dengan jobseeker parameter
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static ArrayList<Invoice> getInvoiceByJobseeker(int id) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_GET_JS);
@@ -89,6 +138,10 @@ public class DatabaseInvoicePostgre {
         return list;
     }
 
+    /** meminta Invoice id terakhir dalam database
+     * @return id Invoice, jika tidak ada return -1
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static int getLastJobId() throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_LASTID);
@@ -98,6 +151,10 @@ public class DatabaseInvoicePostgre {
         return -1;
     }
 
+    /** mengubah status Invoice dalam database
+     * @return true jika berhasil mengubah, false jika tidak
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static boolean changeInvoiceStatus(int id, InvoiceStatus status) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_ALTER_STATUS);
@@ -106,6 +163,12 @@ public class DatabaseInvoicePostgre {
         return ps.executeUpdate() == 1;
     }
 
+    /** mengecek apakah job dengan status tertentu ada dalam database
+     * @param id nomor id Job
+     * @param status status invoice dari Job
+     * @return true jika ditemukan, false jika tidak
+     * @throws Exception error dalam koneksi ataupun saat mengurai data
+     */
     public static boolean isJobExist(int id, InvoiceStatus status) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_EXIST_STATUS);
@@ -117,6 +180,13 @@ public class DatabaseInvoicePostgre {
         return false;
     }
     
+    /** mengubah result set dari API menjadi objek Invoice. Tidak dengan otomatis
+     * memperbarui baris, panggil rs.next() terlebih dahulu untuk menyesuaikan baris
+     * @param rs hasil dari java.sql.PreparedStatement.executeQuery()
+     * @return Invoice yang sesuai
+     * @throws Exception error mengurai data ResultSet, mengambil Job dari database,
+     * mengambil Jobseeker dari database, atau meminta Bonus dari database.
+     */
     private static Invoice toInvoice(ResultSet rs) throws Exception {
 
         Job job = DatabaseJobPostgre.getJob(rs.getInt("job_id"));

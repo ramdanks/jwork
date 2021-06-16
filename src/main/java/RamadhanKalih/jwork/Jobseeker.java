@@ -12,10 +12,15 @@ import java.util.regex.Matcher;
  */
 public class Jobseeker
 {
+    /** nomor unik dari jobseeker */
     private int id;
+    /** nama jobseeker dalam bentuk string */
     private String name;
+    /** email jobseeker dalam bentuk string */
     private String email;
+    /** password jobseeker dalam bentuk string */
     private String password;
+    /** waktu jobseeker bergabung atau dibangun*/
     private Calendar joinDate;
     
     private static final String EMAIL_PATTERN = "^(?!.*([.])\\1)[^.-][a-zA-Z0-9.&*_~]+@[^-. ][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*";
@@ -30,6 +35,7 @@ public class Jobseeker
         setPassword(password);
         this.joinDate = joinDate;
     }
+    
     /** ctor untuk inisialisasi variable dengan tanggal bergabung*/
     public Jobseeker(int id, String name, String email,
                     String password, int year, int month,
@@ -40,9 +46,8 @@ public class Jobseeker
         setPassword(password);
         setJoinDate(year, month, dayOfMonth);
     }
-    /** ctor untuk inisialisasi variable tanpa tanggal bergabung
-     *  default akan bernilai waktu epoch
-     */
+
+    /** ctor untuk inisialisasi variable tanpa tanggal bergabung */
     public Jobseeker(int id, String name, String email,
                     String password) {
         this.id = id;
@@ -51,58 +56,59 @@ public class Jobseeker
         setPassword(password);
         this.joinDate = null;
     }
-    /**
-     * akses nomor id entri jobseeker
-     * @return int: nomor id entri jobseeker
+
+    /** akses nomor id entri jobseeker
+     * @return nomor id entri jobseeker
      */
     public int getID() {
         return id;
     }
-    /**
-     * akses nama jobseeker
-     * @return String: nama jobseeker
+
+    /** akses nama jobseeker
+     * @return nama jobseeker
      */
     public String getName() {
         return name;
     }
-    /**
-     * akses email jobseeker
-     * @return String: email jobseeker
+
+    /** akses email jobseeker
+     * @return email jobseeker
      */
     public String getEmail() {
         return email;
     }
-    /**
-     * akses password jobseeker
-     * @return String: password jobseeker
+
+    /** akses password jobseeker
+     * @return password jobseeker
      */
     public String getPassword() {
         return password;
     }
-    /**
-     * akses tanggal bergabung
-     * @return Calendar tanggal bergabung
+
+    /** akses tanggal bergabung
+     * @return tanggal bergabung
      */
     public Calendar getJoinDate() {
         return joinDate;
     }
-    /**
-     * mutasi id jobseeker
-     * @param int menset id jobseeker
+
+    /** mutasi id jobseeker
+     * @param id nomor id yang baru
      */
     public void setID(int id) {
         this.id = id;
     }
-    /**
-     * mutasi nama jobseeker
-     * @param int menset id jobseeker
+
+    /** mutasi nama jobseeker
+     * @param name nama yang baru
      */
     public void setName(String name) {
         this.name = name;
     }
-    /**
-     * mutasi email jobseeker
-     * @param int menset id jobseeker
+
+    /** mutasi email jobseeker, akan disanitasi dengan regex
+     * jika tidak memenuhi, variabel akan di set menjadi kosong
+     * @param email email yang baru
      */
     public void setEmail(String email) {
         Pattern pt = Pattern.compile(EMAIL_PATTERN);
@@ -113,9 +119,10 @@ public class Jobseeker
         }
         this.email = "";
     }
-    /**
-     * mutasi password jobseeker
-     * @param int menset password jobseeker
+
+    /** mutasi email jobseeker, akan disanitasi dengan regex
+     * jika tidak memenuhi, variabel akan di set menjadi kosong
+     * @param password password yang baru
      */
     public void setPassword(String password) {
         Pattern pt = Pattern.compile(PASSWORD_PATTERN);
@@ -126,24 +133,24 @@ public class Jobseeker
         }
         this.password = "";
     }
-    /**
-     * mutasi waktu bergabung
-     * @param Calendar menset waktu bergabung jobseeker
+
+    /** mutasi waktu bergabung
+     * @param joinDate waktu bergabung yang baru
      */
     public void setJoinDate(Calendar joinDate) {
         this.joinDate = joinDate;
     }
-    /**
-     * mutasi waktu bergabung
-     * @param int year = tahun bergabung
-     * @param int month = bulan bergabung
-     * @param int dayOfMonth = hari begabung
+
+    /** mutasi waktu bergabung
+     * @param year tahun bergabung
+     * @param month bulan bergabung
+     * @param dayOfMonth hari begabung
      */
     public void setJoinDate(int year, int month, int dayOfMonth) {
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
-    /**
-     * mengakses atribut yang ada dalam kelas
+
+    /** mengakses atribut yang ada dalam kelas
      * @return String seluruh informasi pada kelas
      */
     public String toString() {

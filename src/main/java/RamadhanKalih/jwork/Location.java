@@ -6,8 +6,11 @@ package RamadhanKalih.jwork;
  */
 public class Location
 {
+    /** nama provinsi dalam bentuk string */
     private String province;
+    /** nama kota dalam bentuk string */
     private String city;
+    /** deskripsi lokasi dalam bentuk string  */
     private String description;
     
     /** ctor untuk inisialisasi variable */
@@ -16,50 +19,50 @@ public class Location
         this.city = city;
         this.description = description;
     }
-    /**
-     * akses lokasi provinsi
-     * @return String: lokasi provinsi
+    
+    /** akses lokasi provinsi
+     * @return lokasi provinsi
      */
     public String getProvince() {
         return province;
     }
-    /**
-     * akses lokasi kota
-     * @return String: lokasi kota
+
+    /** akses lokasi kota
+     * @return lokasi kota
      */
     public String getCity() {
         return city;
     }
-    /**
-     * akses keterangan lokasi
-     * @return String: keterangan lokasi
+
+    /** akses keterangan lokasi
+     * @return keterangan lokasi
      */
     public String getDescription() {
         return description;
     }
-    /**
-     * mutasi lokasi provinsi
-     * @param String: menset lokasi provinsi
+
+    /** mutasi lokasi provinsi
+     * @param province provinsi yang baru
      */
     public void setProvince(String province) {
         this.province = province;
     }
-    /**
-     * mutasi lokasi kota
-     * @param String: menset lokasi kota
+
+    /** mutasi lokasi kota
+     * @param city kota yang baru
      */
     public void setCity(String city) {
         this.city = city;
     }
-    /**
-     * mutasi deskripsi lokasi
-     * @param String: menset deskripsi lokasi
+
+    /** mutasi deskripsi lokasi
+     * @param description deskripsi yang baru
      */
     public void setDescription(String description) {
         this.description = description;
     }
-    /**
-     * mengakses atribut yang ada dalam kelas
+
+    /** mengakses atribut yang ada dalam kelas
      * @return String seluruh informasi pada kelas
      */
     public String toString() {

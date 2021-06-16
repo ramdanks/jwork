@@ -14,6 +14,7 @@ public class RecruiterNotFoundException extends Exception
         super("Recruiter ID: ");
         recruiter_error = recruiter_input;
     }
+    
     /** mengembalikan keterangan recruiter yang tidak ditemukan */
     public String getMessage() {
         return super.getMessage() + recruiter_error + " not found";

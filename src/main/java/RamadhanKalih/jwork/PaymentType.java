@@ -17,10 +17,12 @@ public enum PaymentType
     private PaymentType(String name) {
         this.name = name;
     }
+    
     /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
     }
+
     /** mengubah bentuk string menjadi enum */
     public static PaymentType fromString(String text) {
         for (PaymentType cat : PaymentType.values())

@@ -17,10 +17,12 @@ public enum InvoiceStatus {
     private InvoiceStatus(String name) {
         this.name = name;
     }
+
     /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
     }
+    
     /** mengubah bentuk string menjadi enum */
     public static InvoiceStatus fromString(String text) {
         for (InvoiceStatus cat : InvoiceStatus.values())

@@ -14,6 +14,7 @@ public class InvoiceNotFoundException extends Exception
         super("Invoice ID: ");
         invoice_error = invoice_input;
     }
+    
     /** mengembalikan keterangan invoice yang tidak ditemukan */
     public String getMessage() {
         return super.getMessage() + invoice_error + " not found";

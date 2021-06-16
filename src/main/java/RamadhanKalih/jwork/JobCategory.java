@@ -22,10 +22,12 @@ public enum JobCategory
     private JobCategory(String name) {
         this.name = name;
     }
+    
     /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
     }
+
     /** mengubah bentuk string menjadi enum */
     public static JobCategory fromString(String text) {
         for (JobCategory cat : JobCategory.values())

@@ -14,6 +14,7 @@ public class JobNotFoundException extends Exception
         super("Job ID: ");
         job_error = job_input;
     }
+    
     /** mengembalikan keterangan job yang tidak ditemukan */
     public String getMessage() {
         return super.getMessage() + job_error + " not found";

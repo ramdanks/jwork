@@ -16,6 +16,7 @@ public class BonusNotFoundException extends Exception
         super("Bonus ID: ");
         bonus_error = bonus_input;
     }
+    
     /** mengembalikan keterangan bonus id yang tidak ditemukan */
     public String getMessage() {
         return super.getMessage() + bonus_error + " not found";

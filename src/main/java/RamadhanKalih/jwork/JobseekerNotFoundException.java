@@ -14,6 +14,7 @@ public class JobseekerNotFoundException extends Exception
         super("Jobseeker ID: ");
         jobseeker_error = jobseeker_input;
     }
+    
     /** mengembalikan keterangan jobseeker yang tidak ditemukan */
     public String getMessage() {
         return super.getMessage() + jobseeker_error + " not found";

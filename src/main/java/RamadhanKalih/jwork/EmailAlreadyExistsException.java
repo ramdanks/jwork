@@ -14,6 +14,7 @@ public class EmailAlreadyExistsException extends Exception
         super("Jobseeker Email: ");
         jobseeker_error = jobseeker_input;
     }
+    
     /** mengembalikan keterangan email yang sudah terdaftar */
     public String getMessage() {
         return super.getMessage() + jobseeker_error.getEmail() + " already exists";

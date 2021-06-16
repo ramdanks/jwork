@@ -18,17 +18,18 @@ public class DatabaseInvoice
     public static ArrayList<Invoice> getInvoiceDatabase() {
         return INVOICE_DATABASE;
     }
-    /** meminta nomor id Bonus yang terakhir berhasil masuk ke database melalui method addInvoice()
-     * @return int nomor id Invoice
+
+    /** meminta nomor id Bonus yang terakhir masuk ke database melalui method addInvoice()
+     * @return nomor id Invoice
      */
     public static int getLastId() {
         return lastId;
     }
 
     /** meminta invoice dalam database kelas ini
-     * @param id nomor id Invoice yang diminta
-     * @return Invoice
-     * @throws InvoiceNotFoundException jika tidak menemukan invoice yang diminta parameter
+     * @param id nomor id Invoice
+     * @return Invoice dengan id sesuai parameter
+     * @throws InvoiceNotFoundException jika tidak ditemukan invoice yang dimaksud
      */
     public static Invoice getInvoiceById(int id) throws InvoiceNotFoundException {
         for (Invoice i : INVOICE_DATABASE)
@@ -88,7 +89,7 @@ public class DatabaseInvoice
 
     /** menghapus Invoice dari database kelas ini
      * @param id nomor id Invoice yang dihapus
-     * @return boolean true jika berhasil
+     * @return true jika berhasil
      * @throws InvoiceNotFoundException apabila tidak menemukan Invoice yang diminta parameter
      */
     public static boolean removeInvoice(int id) throws InvoiceNotFoundException {

@@ -14,6 +14,7 @@ public class OngoingInvoiceAlreadyExistsException extends Exception
         super("Ongoing Invoice: ");
         invoice_error = invoice_input;
     }
+    
     /** mengembalikan keterangan invoice yang sudah terdaftar */
     public String getMessage() {
         return super.getMessage() + invoice_error.getId() + " already exists";

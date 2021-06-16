@@ -19,33 +19,35 @@ public class BankPayment extends Invoice
         super.adminFee = 0;
         super.type = PAYMENT_TYPE;
     }
+    
     /** ctor dengan tarif admin */
     public BankPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker, int adminFee) {
         super(id, jobs, jobseeker);
         super.adminFee = adminFee;
         super.type = PAYMENT_TYPE;
     }
-    /**
-     * mengakses tipe pembayaran @Invoice sesuai enum @PaymentType
+
+    /** mengakses tipe pembayaran @Invoice sesuai enum @PaymentType
      * @return PaymentType
      */
     public PaymentType getPaymentType() {
         return PAYMENT_TYPE;
     }
-    /**
-     * mengakses tarif administrasi
+
+    /** mengakses tarif administrasi
      * @return int
      */
     public int getAdminFee() {
         return adminFee;
     }
-    /**
-     * mutasi tarif administrasi
+
+    /** mutasi tarif administrasi
      * @param adminFee
      */
     public void setAdminFee(int adminFee) {
         this.adminFee = adminFee;
     }
+
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
         // perbarui total fee dengan fee jobs yang ada
@@ -56,6 +58,7 @@ public class BankPayment extends Invoice
         if (getAdminFee() != 0)
             this.totalFee += getAdminFee();
     }
+
     /** mengembalikan seluruh informasi yang disimpan dalam kelas */
     public String toString() {
         Date date = getDate().getTime();

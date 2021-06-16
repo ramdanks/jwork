@@ -19,33 +19,35 @@ public class EwalletPayment extends Invoice
         super.bonus = null;
         super.type = PAYMENT_TYPE;
     }
+
     /** ctor dengan bonus */
     public EwalletPayment(int id, ArrayList<Job> job, Jobseeker jobseeker, Bonus bonus) {
         super(id, job, jobseeker);
         this.bonus = bonus;
         super.type = PAYMENT_TYPE;
     }
-    /**
-     * mengakses tipe pembayaran @Invoice sesuai enum @PaymentType
+
+    /** mengakses tipe pembayaran Invoice sesuai enum PaymentType
      * @return PaymentType
      */
     public PaymentType getPaymentType() {
         return PAYMENT_TYPE;
     }
-    /**
-     * mengakses bonus pada kelas ini
+
+    /** mengakses bonus pada kelas ini
      * @return Bonus
      */
     public Bonus getBonus() {
         return bonus;
     }
-    /**
-     * mutasi bonus pada kelas ini
-     * @param Bonus
+
+    /** mutasi bonus pada kelas ini
+     * @param bonus yang baru
      */
     public void setBonus(Bonus bonus) {
         this.bonus = bonus;
     }
+
     /** memperbarui total fee berdasarkan bonus */
     public void setTotalFee() {
         // perbarui total fee dengan fee jobs yang ada
@@ -60,6 +62,7 @@ public class EwalletPayment extends Invoice
             super.totalFee += bonus.getExtraFee();
         }
     }
+
     /** mencetak informasi pembayaran ewallet ke terminal */
     public String toString() {
         Date date = getDate().getTime();
