@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "721e8c64-0b7a-4d45-983a-c3422b96cb6c",
+		"name": "Bonus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/bonus/?referralCode=WOWJUNI&extraFee=5000&minTotalFee=20000&active=true",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bonus",
+						""
+					],
+					"query": [
+						{
+							"key": "referralCode",
+							"value": "WOWJUNI"
+						},
+						{
+							"key": "extraFee",
+							"value": "5000"
+						},
+						{
+							"key": "minTotalFee",
+							"value": "20000"
+						},
+						{
+							"key": "active",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Referral",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/bonus/JAJAJA",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bonus",
+						"JAJAJA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

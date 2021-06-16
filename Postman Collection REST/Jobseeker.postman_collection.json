@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "320081d8-88e1-479d-9b28-e88553d8dbf9",
+		"name": "Jobseeker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/jobseeker/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"jobseeker",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/jobseeker/register?name&email&password",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"jobseeker",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null
+						},
+						{
+							"key": "email",
+							"value": null
+						},
+						{
+							"key": "password",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/jobseeker/login?email=ramadhan.kalih@ui.ac.id&password",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"jobseeker",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ramadhan.kalih@ui.ac.id"
+						},
+						{
+							"key": "password",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "3736d765-5b1d-49d9-b960-61d13b7ed71f",
+		"name": "Job",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Recruiter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/job/?name&recruiterId&fee&category",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"job",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null
+						},
+						{
+							"key": "recruiterId",
+							"value": null
+						},
+						{
+							"key": "fee",
+							"value": null
+						},
+						{
+							"key": "category",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

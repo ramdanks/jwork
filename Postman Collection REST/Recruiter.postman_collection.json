@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "454d1b45-5d07-4451-aebc-0210eac06bd7",
+		"name": "Recruiter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/recruiter",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"recruiter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/recruiter/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"recruiter",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/recruiter/?name=Hansaka&email=hansaka@ui.ac.id&phoneNumber=02391923&province=Sumatera Selatan&city=Palembang&description=Gudang",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"recruiter",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Hansaka"
+						},
+						{
+							"key": "email",
+							"value": "hansaka@ui.ac.id"
+						},
+						{
+							"key": "phoneNumber",
+							"value": "02391923"
+						},
+						{
+							"key": "province",
+							"value": "Sumatera Selatan"
+						},
+						{
+							"key": "city",
+							"value": "Palembang"
+						},
+						{
+							"key": "description",
+							"value": "Gudang"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

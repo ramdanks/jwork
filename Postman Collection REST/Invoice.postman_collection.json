@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "bb657ac5-7f60-44f5-8193-44d70d3afadd",
+		"name": "Invoice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Jobseeker",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/invoice/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"invoice",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost/invoice/invoiceStatus/?id&status",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"invoice",
+						"invoiceStatus",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": null
+						},
+						{
+							"key": "status",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost/invoice/0",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"invoice",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Bank Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/invoice/createBankPayment?jobIdList&jobseekerId&adminFee",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"invoice",
+						"createBankPayment"
+					],
+					"query": [
+						{
+							"key": "jobIdList",
+							"value": null
+						},
+						{
+							"key": "jobseekerId",
+							"value": null
+						},
+						{
+							"key": "adminFee",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Ewallet Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/invoice/createEWalletPayment?jobIdList&jobseekerId&referralCode",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"invoice",
+						"createEWalletPayment"
+					],
+					"query": [
+						{
+							"key": "jobIdList",
+							"value": null
+						},
+						{
+							"key": "jobseekerId",
+							"value": null
+						},
+						{
+							"key": "referralCode",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
