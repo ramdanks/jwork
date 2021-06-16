@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DatabaseJobPostgre {
 
-    private static final String Q_INSERT    = "INSERT INTO job(name,recruiter_id,fee,category) VALUES (?,?,?,?)";
+    private static final String Q_INSERT    = "INSERT INTO job(name,recruiter_id,fee,category) VALUES (?,?,?,?) RETURNING id";
     private static final String Q_REMOVE    = "DELETE FROM job WHERE id=?";
     private static final String Q_GET_ALL   = "SELECT * FROM job";
     private static final String Q_GET_ID    = "SELECT * FROM job WHERE id=?";
@@ -16,7 +16,7 @@ public class DatabaseJobPostgre {
     private static final String Q_GET_CAT   = "SELECT * FROM job WHERE category=?";
     private static final String Q_LASTID    = "SELECT id FROM job ORDER BY id DESC LIMIT 1";
 
-    public static boolean insertJob(Job job) throws Exception {   
+    public static int insertJob(Job job) throws Exception {   
         return insertJob(
             job.getName(),
             job.getRecruiter().getId(),
@@ -24,14 +24,15 @@ public class DatabaseJobPostgre {
             job.getCategory());
     }
 
-    public static boolean insertJob(String name, int recruiterId, int fee, JobCategory category) throws Exception {   
+    public static int insertJob(String name, int recruiterId, int fee, JobCategory category) throws Exception {   
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_INSERT);
         ps.setString(1, name);
         ps.setInt(2, recruiterId);
         ps.setInt(3, fee);
         ps.setString(4, category.toString());
-        return ps.executeUpdate() == 1;
+        ResultSet rs = ps.executeQuery();
+        return rs.next() ? rs.getInt(1) : -1;
     }
 
     public static boolean removeJob(int jobId) throws Exception {

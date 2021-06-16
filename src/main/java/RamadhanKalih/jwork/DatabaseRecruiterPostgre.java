@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 public class DatabaseRecruiterPostgre {
 
-    private static final String Q_INSERT    = "INSERT INTO recruiter(name,email,phonenumber,loc_province,loc_city,loc_desc) VALUES (?,?,?,?,?,?)";
+    private static final String Q_INSERT    = "INSERT INTO recruiter(name,email,phone_number,loc_province,loc_city,loc_desc) VALUES (?,?,?,?,?,?) RETURNING id";
     private static final String Q_REMOVE    = "DELETE FROM recruiter WHERE id=?";
     private static final String Q_GET       = "SELECT * FROM recruiter WHERE id=?";
     private static final String Q_GETALL    = "SELECT * FROM recruiter";
     private static final String Q_GETLASTID = "SELECT id FROM recruiter ORDER BY id DESC LIMIT 1";
 
-    public static boolean insertRecruiter(Recruiter recruiter) throws Exception {   
+    public static int insertRecruiter(Recruiter recruiter) throws Exception {   
         return insertRecruiter(
             recruiter.getName(),
             recruiter.getEmail(),
@@ -24,8 +24,8 @@ public class DatabaseRecruiterPostgre {
             recruiter.getLocation().getDescription());
     }
 
-    public static boolean insertRecruiter(  String name, String email, String phoneNumber,
-                                            String loc_province, String loc_city, String loc_desc) throws Exception {   
+    public static int insertRecruiter(  String name, String email, String phoneNumber,
+                                        String loc_province, String loc_city, String loc_desc) throws Exception {   
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_INSERT);
         ps.setString(1, name);
@@ -34,7 +34,8 @@ public class DatabaseRecruiterPostgre {
         ps.setString(4, loc_province);
         ps.setString(5, loc_city);
         ps.setString(6, loc_desc);
-        return ps.executeUpdate() == 1;
+        ResultSet rs = ps.executeQuery();
+        return rs.next() ? rs.getInt(1) : -1;
     }
 
     public static boolean removeRecruiter(int recruiterId) throws Exception {
@@ -83,7 +84,7 @@ public class DatabaseRecruiterPostgre {
             rs.getInt("id"),
             rs.getString("name").stripTrailing(),
             rs.getString("email").stripTrailing(),
-            rs.getString("phonenumber").stripTrailing(),
+            rs.getString("phone_number").stripTrailing(),
             loc
         );
     }

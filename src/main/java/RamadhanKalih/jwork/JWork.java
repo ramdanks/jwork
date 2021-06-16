@@ -10,14 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JWork
 {
     public static void main(String[] args) {
-        
-        Location loc1 = new Location("Jawa Barat", "Depok", "Headquarter Facebook");
-        Location loc2 = new Location("Sumatera Selatan", "Palembang", "Gudang Pempek");
-        Location loc3 = new Location("Bali", "Denpasar", "Travel Outlet");
-        
-        DatabaseRecruiter.addRecruiter(new Recruiter(1, "Geraldy", "geraldy@gmail.com", "0119201254", loc1));
-        DatabaseRecruiter.addRecruiter(new Recruiter(2, "Hansaka", "hansaka@gmail.com", "0119201254", loc2));
-        DatabaseRecruiter.addRecruiter(new Recruiter(3, "Mustofa", "mustofa@gmail.com", "0119201254", loc3));
 
         try {
             // kategori job yang sama

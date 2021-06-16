@@ -58,7 +58,9 @@ public class JobController
                         @RequestParam(value="category") JobCategory category)
     {
         try {
-            DatabaseJobPostgre.insertJob(name, recruiterId, fee, category);
+            Recruiter rec = DatabaseRecruiterPostgre.getRecruiter(recruiterId);
+            int jobId = DatabaseJobPostgre.insertJob(name, recruiterId, fee, category);
+            return new Job(jobId, name, rec, fee, category);
         } catch (Exception e) {
             System.err.println(e);
         }

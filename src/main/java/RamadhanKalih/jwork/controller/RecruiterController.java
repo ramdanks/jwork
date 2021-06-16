@@ -38,7 +38,8 @@ public class RecruiterController
                                     @RequestParam(value="description") String description)
     {
         try {
-            DatabaseRecruiterPostgre.insertRecruiter(name, email, phoneNumber, province, city, description);
+            int recruiterId = DatabaseRecruiterPostgre.insertRecruiter(name, email, phoneNumber, province, city, description);
+            return new Recruiter(recruiterId, name, email, phoneNumber, new Location(province, city, description));
         } catch (Exception e) {
             System.err.println(e);
         }

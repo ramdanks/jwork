@@ -7,26 +7,27 @@ import java.util.Calendar;
 
 public class DatabaseJobseekerPostgre {
 
-    private static final String Q_INSERT    = "INSERT INTO jobseeker(name,email,password) VALUES (?,?,?)";
+    private static final String Q_INSERT    = "INSERT INTO jobseeker(name,email,password) VALUES (?,?,?) RETURNING id";
     private static final String Q_REMOVE    = "DELETE FROM jobseeker WHERE id=?";
     private static final String Q_GET1      = "SELECT * FROM jobseeker WHERE id=?";
     private static final String Q_GET2      = "SELECT * FROM jobseeker WHERE email=? AND password=?";
     private static final String Q_GETLASTID = "SELECT id FROM jobseeker ORDER BY id DESC LIMIT 1";
 
-    public static boolean insertJobseeker(Jobseeker jobseeker) throws Exception {
+    public static int insertJobseeker(Jobseeker jobseeker) throws Exception {
         return insertJobseeker(
             jobseeker.getName(),
             jobseeker.getEmail(),
             jobseeker.getPassword());
     }
 
-    public static boolean insertJobseeker(String name, String email, String password) throws Exception {   
+    public static int insertJobseeker(String name, String email, String password) throws Exception {   
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_INSERT);
         ps.setString(1, name);
         ps.setString(2, email);
         ps.setString(3, password);
-        return ps.executeUpdate() == 1;
+        ResultSet rs = ps.executeQuery();
+        return rs.next() ? rs.getInt(1) : -1;
     }
 
     public static boolean removeJobseeker(int jobseekerId) throws Exception {

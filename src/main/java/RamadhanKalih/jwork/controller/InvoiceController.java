@@ -87,7 +87,8 @@ public class InvoiceController
             ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
             Jobseeker js = DatabaseJobseekerPostgre.getJobseeker(jobseekerId);
             Invoice inv = new BankPayment(0, joblist, js, adminFee);
-            DatabaseInvoicePostgre.insertInvoice(inv);
+            int invId = DatabaseInvoicePostgre.insertInvoice(inv);
+            inv.setId(invId);
             return inv;
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,7 +113,8 @@ public class InvoiceController
             Jobseeker js = DatabaseJobseekerPostgre.getJobseeker(jobseekerId);
             Bonus bonus = DatabaseBonusPostgre.getBonusByReferral(referralCode);
             Invoice inv = new EwalletPayment(0, joblist, js, bonus);
-            DatabaseInvoicePostgre.insertInvoice(inv);
+            int invId = DatabaseInvoicePostgre.insertInvoice(inv);
+            inv.setId(invId);
             return inv;
         } catch (Exception e) {
             e.printStackTrace();

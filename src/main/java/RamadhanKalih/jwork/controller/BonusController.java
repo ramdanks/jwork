@@ -36,7 +36,8 @@ public class BonusController
                             @RequestParam(value="active") boolean active)
     {
         try {
-            DatabaseBonusPostgre.insertBonus(referralCode, extraFee, minTotalFee, active);
+            int bonusId = DatabaseBonusPostgre.insertBonus(referralCode, extraFee, minTotalFee, active);
+            return new Bonus(bonusId, referralCode, extraFee, minTotalFee, active);
         } catch (Exception e) {
             System.err.println(e);
         }

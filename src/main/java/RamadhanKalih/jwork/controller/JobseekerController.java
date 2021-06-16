@@ -24,7 +24,8 @@ public class JobseekerController
                                         @RequestParam(value="password") String password)
     {
         try {
-            DatabaseJobseekerPostgre.insertJobseeker(name, email, password);
+            int jobseekerId = DatabaseJobseekerPostgre.insertJobseeker(name, email, password);
+            return new Jobseeker(jobseekerId, name, email, password);
         } catch (Exception e) {
             System.err.println(e);
         }

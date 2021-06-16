@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class DatabaseInvoicePostgre {
-    private static final String Q_INSERT        = "INSERT INTO invoice(job_id,date,totalfee,jobseeker_id,status,bonus_id,adminfee,ptype) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String Q_INSERT        = "INSERT INTO invoice(job_id,date,totalfee,jobseeker_id,status,bonus_id,adminfee,ptype) VALUES (?,?,?,?,?,?,?,?) RETURNING id";
     private static final String Q_REMOVE        = "DELETE FROM invoice WHERE id=?";
     private static final String Q_GET_ALL       = "SELECT * FROM invoice";
     private static final String Q_GET_ID        = "SELECT * FROM invoice WHERE id=?";
@@ -19,7 +19,7 @@ public class DatabaseInvoicePostgre {
     private static final String Q_LASTID        = "SELECT id FROM invoice ORDER BY id DESC LIMIT 1";
     private static final String Q_EXIST_STATUS  = "SELECT EXISTS(SELECT 1 FROM invoice WHERE job_id=? AND status=?)";
 
-    public static boolean insertInvoice(Invoice invoice) throws Exception {
+    public static int insertInvoice(Invoice invoice) throws Exception {
         int bonusId = invoice.bonus == null ? -1 : invoice.bonus.getId();
         return insertInvoice(
             invoice.getJobs().get(0).getId(),
@@ -32,7 +32,7 @@ public class DatabaseInvoicePostgre {
             invoice.type);
     }
 
-    public static boolean insertInvoice(int jobId, Calendar date, int totalFee,
+    public static int insertInvoice(int jobId, Calendar date, int totalFee,
                                         int jobseekerId, InvoiceStatus status,
                                         int bonusId, int adminFee, PaymentType type) throws Exception {   
         Connection c = DatabaseConnectionPostgre.connection();
@@ -47,7 +47,8 @@ public class DatabaseInvoicePostgre {
         ps.setString(5, status.toString());
         ps.setInt(7, adminFee);
         ps.setString(8, type.toString());
-        return ps.executeUpdate() == 1;
+        ResultSet rs = ps.executeQuery();
+        return rs.next() ? rs.getInt(1) : -1;
     }
 
     public static boolean removeInvoice(int id) throws Exception {

@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class DatabaseBonusPostgre 
 {
-    private static final String Q_INSERT    = "INSERT INTO bonus(referralcode,extrafee,mintotalfee,active) VALUES (?,?,?,?)";
+    private static final String Q_INSERT    = "INSERT INTO bonus(referralcode,extrafee,mintotalfee,active) VALUES (?,?,?,?) RETURNING id";
     private static final String Q_REMOVE    = "DELETE FROM bonus WHERE id=?";
     private static final String Q_GET_ALL   = "SELECT * FROM bonus";
     private static final String Q_GET_ID    = "SELECT * FROM bonus WHERE id=?";
     private static final String Q_GET_REF   = "SELECT * FROM bonus WHERE referralcode=?";
     private static final String Q_LASTID    = "SELECT id FROM bonus ORDER BY id DESC LIMIT 1";
 
-    public static boolean insertBonus(Bonus bonus) throws Exception {
+    public static int insertBonus(Bonus bonus) throws Exception {
         return insertBonus(
             bonus.getReferralCode(),
             bonus.getExtraFee(),
@@ -23,14 +23,15 @@ public class DatabaseBonusPostgre
             bonus.getActive());
     }
 
-    public static boolean insertBonus(String referral, int extraFee, int minTotalFee, boolean active) throws Exception {   
+    public static int insertBonus(String referral, int extraFee, int minTotalFee, boolean active) throws Exception {   
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_INSERT);
         ps.setString(1, referral);
         ps.setInt(2, extraFee);
         ps.setInt(3, minTotalFee);
         ps.setBoolean(4, active);
-        return ps.executeUpdate() == 1;
+        ResultSet rs = ps.executeQuery();
+        return rs.next() ? rs.getInt(1) : -1;
     }
 
     public static boolean removeBonus(int bonusId) throws Exception {
