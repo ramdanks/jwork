@@ -29,8 +29,8 @@ public class DatabaseInvoicePostgre
     private static final String Q_ALTER_STATUS  = "UPDATE invoice SET status=? WHERE id=?";
     /** query psql meminta nomor id Invoice terakhir dalam db */
     private static final String Q_LASTID        = "SELECT id FROM invoice ORDER BY id DESC LIMIT 1";
-    /** query psql menanyakan keberadaan Invoice dalam db dengan job id dan InvoiceStatus tertentu*/
-    private static final String Q_EXIST_STATUS  = "SELECT EXISTS(SELECT 1 FROM invoice WHERE job_id=? AND status=?)";
+    /** query psql menanyakan keberadaan Invoice dalam db dengan jobseeker id, job id, dan InvoiceStatus tertentu*/
+    private static final String Q_EXIST_STATUS  = "SELECT EXISTS(SELECT 1 FROM invoice WHERE jobseeker_id=? AND job_id=? AND status=?)";
 
     /** memasukkan ke dalam database psql
      * @param invoice Invoice yang ingin disimpan
@@ -164,16 +164,18 @@ public class DatabaseInvoicePostgre
     }
 
     /** mengecek apakah job dengan status tertentu ada dalam database
-     * @param id nomor id Job
+     * @param jobseekerId nomor id Jobseeker
+     * @param jobId nomor id Job
      * @param status status invoice dari Job
      * @return true jika ditemukan, false jika tidak
      * @throws Exception error dalam koneksi ataupun saat mengurai data
      */
-    public static boolean isJobExist(int id, InvoiceStatus status) throws Exception {
+    public static boolean isJobExist(int jobseekerId, int jobId, InvoiceStatus status) throws Exception {
         Connection c = DatabaseConnectionPostgre.connection();
         PreparedStatement ps = c.prepareStatement(Q_EXIST_STATUS);
-        ps.setInt(1, id);
-        ps.setString(2, status.toString());
+        ps.setInt(1, jobseekerId);
+        ps.setInt(2, jobId);
+        ps.setString(3, status.toString());
         ResultSet rs = ps.executeQuery();
         if (rs.next())
             return rs.getBoolean(1);

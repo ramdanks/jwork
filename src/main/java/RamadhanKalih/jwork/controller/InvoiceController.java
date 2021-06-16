@@ -112,7 +112,7 @@ public class InvoiceController
             // hanya satu job untuk satu invoice untuk saat ini
             int jobId = jobIdList.get(0);
             // tidak boleh duplikat job yang berstatus OnGoing
-            if (DatabaseInvoicePostgre.isJobExist(jobId, InvoiceStatus.OnGoing))
+            if (DatabaseInvoicePostgre.isJobExist(jobseekerId, jobId, InvoiceStatus.OnGoing))
                 throw new Exception("Duplicate OnGoing Invoice with Job Id: " + jobId + ", Jobseeker Id: " + jobseekerId);
             Job job = DatabaseJobPostgre.getJob(jobId);
             ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
@@ -144,7 +144,7 @@ public class InvoiceController
             // hanya satu job untuk satu invoice untuk saat ini
             int jobId = jobIdList.get(0);
             // tidak boleh duplikat job yang berstatus OnGoing
-            if (DatabaseInvoicePostgre.isJobExist(jobId, InvoiceStatus.OnGoing))
+            if (DatabaseInvoicePostgre.isJobExist(jobseekerId, jobId, InvoiceStatus.OnGoing))
                 throw new Exception("Duplicate OnGoing Invoice with Job Id: " + jobId + ", Jobseeker Id: " + jobseekerId);
             Job job = DatabaseJobPostgre.getJob(jobId);
             ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
