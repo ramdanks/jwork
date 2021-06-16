@@ -15,6 +15,10 @@ public abstract class Invoice
     protected int totalFee;
     private Jobseeker jobseeker;
     private InvoiceStatus invoiceStatus;
+
+    protected int adminFee = 0;
+    protected Bonus bonus = null;
+    protected PaymentType type;
     
     /** ctor untuk inisialisasi variable */
     public Invoice(int id, ArrayList<Job> jobs, Jobseeker jobseeker) {

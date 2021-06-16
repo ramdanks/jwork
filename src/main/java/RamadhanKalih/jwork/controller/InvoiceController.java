@@ -12,49 +12,60 @@ public class InvoiceController
 
     @RequestMapping(value="", method = RequestMethod.GET)
     public ArrayList<Invoice> getAllInvoice() {
-        return DatabaseInvoice.getInvoiceDatabase();
+        try {
+            return DatabaseInvoicePostgre.getAllInvoice();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e);
+        }
+        return null;
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public Invoice getInvoiceById(@PathVariable int id) {
-        Invoice var = null;
         try {
-            var = DatabaseInvoice.getInvoiceById(id);
-        } catch (InvoiceNotFoundException e) {
-            System.out.println(e.getMessage());
-            var = null;
+            return DatabaseInvoicePostgre.getInvoice(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e);
         }
-        return var;
+        return null;
     }
 
     @RequestMapping(value="/jobseeker/{jobseekerId}", method = RequestMethod.GET)
     public ArrayList<Invoice> getInvoiceByJobseeker(@PathVariable int jobseekerId)
     {
-        return DatabaseInvoice.getInvoiceByJobseeker(jobseekerId);
+        try {
+            return DatabaseInvoicePostgre.getInvoiceByJobseeker(jobseekerId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e);
+        }
+        return null;
     }
 
     @RequestMapping(value="/invoiceStatus/", method = RequestMethod.PUT)
     public Invoice changeInvoiceStatus( @RequestParam(value="id") int id,
                                         @RequestParam(value="status") InvoiceStatus status)
     {
-        Invoice var = null;
         try {
-            var = DatabaseInvoice.getInvoiceById(id);
-            var.setInvoiceStatus(status);
-        } catch (InvoiceNotFoundException e) {
-            System.out.println(e.getMessage());
-            var = null;
+            DatabaseInvoicePostgre.changeInvoiceStatus(id, status);
+            return DatabaseInvoicePostgre.getInvoice(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e);
         }
-        return var;
+        return null;
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
     public Boolean removeInvoice(@PathVariable int id)
     {
         try {
-            return DatabaseInvoice.removeInvoice(id);
-        } catch (InvoiceNotFoundException e) {
-            System.out.println(e.getMessage());
+            return DatabaseInvoicePostgre.removeInvoice(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e);
         }
         return false;
     }
@@ -67,29 +78,20 @@ public class InvoiceController
         if (adminFee == null)
             adminFee = 0;
         try {
-            // dalam satu request, kita hanya boleh membuat satu invoice untuk satu job
-            Job jobApplied = DatabaseJob.getJobById(jobIdList.get(0));
-            // ambil data dari database
-            ArrayList<Invoice> jobseekerInvoiceList = DatabaseInvoice.getInvoiceByJobseeker(jobseekerId);
-            // pastikan bahwa jobseeker tidak apply lebih dari satu job
-            if (duplicateOnGoingJob(jobseekerInvoiceList, jobApplied))
-                throw new Exception(String.format("Duplicate Job (id: %d) by Jobseeker id: %d", jobApplied.getId(), jobseekerId));
-            // buat invoice dan masukan kedalam database
-            ArrayList<Job> joblist = new ArrayList<Job>();
-            joblist.add(jobApplied);
-            Jobseeker js = DatabaseJobseeker.getJobseekerById(jobseekerId);
-            int newId = DatabaseInvoice.getLastId() + 1;
-            Invoice invoice = new BankPayment(newId, joblist, js, adminFee);
-            DatabaseInvoice.addInvoice(invoice);
-            return invoice;
-        } catch (JobseekerNotFoundException e) {
-            System.out.println(e.getMessage());
-        } catch (JobNotFoundException e) {
-            System.out.println(e.getMessage());
-        } catch (OngoingInvoiceAlreadyExistsException e) {
-            System.out.println(e.getMessage());
+            // currently can only take one job in one invoice
+            int jobId = jobIdList.get(0);
+            // should only have one OnGoing job from a jobseeker
+            if (DatabaseInvoicePostgre.isExist(jobId, InvoiceStatus.OnGoing))
+                throw new Exception("Duplicate OnGoing Invoice with Job Id: " + jobId + ", Jobseeker Id: " + jobseekerId);
+            Job job = DatabaseJobPostgre.getJob(jobId);
+            ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
+            Jobseeker js = DatabaseJobseekerPostgre.getJobseeker(jobseekerId);
+            Invoice inv = new BankPayment(0, joblist, js, adminFee);
+            DatabaseInvoicePostgre.insertInvoice(inv);
+            return inv;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            System.err.println(e);
         }
         return null;
     }
@@ -99,35 +101,24 @@ public class InvoiceController
                                         @RequestParam(value="jobseekerId") int jobseekerId,
                                         @RequestParam(value="referralCode", required=false) String referralCode)
     {
-        if (referralCode == null)
-            referralCode = "";
-            try {
-                // dalam satu request, kita hanya boleh membuat satu invoice untuk satu job
-                Job jobApplied = DatabaseJob.getJobById(jobIdList.get(0));
-                // ambil data dari database
-                ArrayList<Invoice> jobseekerInvoiceList = DatabaseInvoice.getInvoiceByJobseeker(jobseekerId);
-                // pastikan bahwa jobseeker tidak apply lebih dari satu job
-                if (duplicateOnGoingJob(jobseekerInvoiceList, jobApplied))
-                    throw new Exception(String.format("Duplicate Job (id: %d) by Jobseeker id: %d", jobApplied.getId(), jobseekerId));
-                // buat invoice dan masukan kedalam database
-                ArrayList<Job> joblist = new ArrayList<Job>();
-                joblist.add(jobApplied);
-                Jobseeker js = DatabaseJobseeker.getJobseekerById(jobseekerId);
-                int newId = DatabaseInvoice.getLastId() + 1;
-                Bonus bonus = DatabaseBonus.getBonusByReferralCode(referralCode);
-                Invoice invoice = new EwalletPayment(newId, joblist, js, bonus);
-                DatabaseInvoice.addInvoice(invoice);
-                return invoice;
-            } catch (JobseekerNotFoundException e) {
-                System.out.println(e.getMessage());
-            } catch (JobNotFoundException e) {
-                System.out.println(e.getMessage());
-            } catch (OngoingInvoiceAlreadyExistsException e) {
-                System.out.println(e.getMessage());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            return null;
+        try {
+            // currently can only take one job in one invoice
+            int jobId = jobIdList.get(0);
+            // should only have one OnGoing job from a jobseeker
+            if (DatabaseInvoicePostgre.isExist(jobId, InvoiceStatus.OnGoing))
+                throw new Exception("Duplicate OnGoing Invoice with Job Id: " + jobId + ", Jobseeker Id: " + jobseekerId);
+            Job job = DatabaseJobPostgre.getJob(jobId);
+            ArrayList<Job> joblist = new ArrayList<Job>() {{ add(job); }};
+            Jobseeker js = DatabaseJobseekerPostgre.getJobseeker(jobseekerId);
+            Bonus bonus = DatabaseBonusPostgre.getBonusByReferral(referralCode);
+            Invoice inv = new EwalletPayment(0, joblist, js, bonus);
+            DatabaseInvoicePostgre.insertInvoice(inv);
+            return inv;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e);
+        }
+        return null;
     }
 
     private boolean duplicateOnGoingJob(ArrayList<Invoice> jobseekerInvoiceList, Job jobApplied)

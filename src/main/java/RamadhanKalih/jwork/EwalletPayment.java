@@ -12,19 +12,18 @@ public class EwalletPayment extends Invoice
 {
     /** tipe pembayaran sesuai enum @PaymentType */
     private static final PaymentType PAYMENT_TYPE = PaymentType.EwalletPayment;
-    /** bonus berupa bayaran extra pada total fee */
-    private Bonus bonus;
 
     /** ctor tanpa bonus */
     public EwalletPayment(int id, ArrayList<Job> jobs, Jobseeker jobseeker) {
         super(id, jobs, jobseeker);
-        this.bonus = null;
+        super.bonus = null;
+        super.type = PAYMENT_TYPE;
     }
     /** ctor dengan bonus */
-    public EwalletPayment(int id, ArrayList<Job> job, Jobseeker jobseeker,
-                        Bonus bonus) {
+    public EwalletPayment(int id, ArrayList<Job> job, Jobseeker jobseeker, Bonus bonus) {
         super(id, job, jobseeker);
         this.bonus = bonus;
+        super.type = PAYMENT_TYPE;
     }
     /**
      * mengakses tipe pembayaran @Invoice sesuai enum @PaymentType

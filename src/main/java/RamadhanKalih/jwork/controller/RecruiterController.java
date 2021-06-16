@@ -11,19 +11,22 @@ public class RecruiterController
 
     @RequestMapping("")
     public ArrayList<Recruiter> getAllRecruiter() {
-        return DatabaseRecruiter.getRecruiterDatabase();
+        try {
+            return DatabaseRecruiterPostgre.getAllRecruiter();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return null;
     }
 
     @RequestMapping("/{id}")
     public Recruiter getRecruiterById(@PathVariable int id) {
-        Recruiter var = null;
         try {
-            var = DatabaseRecruiter.getRecruiterById(id);
-        } catch (RecruiterNotFoundException e) {
-            System.out.println(e.getMessage());
-            var = null;
+            return DatabaseRecruiterPostgre.getRecruiter(id);
+        } catch (Exception e) {
+            System.err.println(e);
         }
-        return var;
+        return null;
     }
 
     @RequestMapping(value="/", method = RequestMethod.POST)
@@ -34,10 +37,11 @@ public class RecruiterController
                                     @RequestParam(value="city") String city,
                                     @RequestParam(value="description") String description)
     {
-        Location loc = new Location(province, city, description);
-        int newId = DatabaseRecruiter.getLastId() + 1;
-        Recruiter var = new Recruiter(newId, name, email, phoneNumber, loc);
-        DatabaseRecruiter.addRecruiter(var);
-        return var;
+        try {
+            DatabaseRecruiterPostgre.insertRecruiter(name, email, phoneNumber, province, city, description);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return null;
     }
 }

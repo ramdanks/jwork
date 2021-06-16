@@ -6,14 +6,14 @@ package RamadhanKalih.jwork;
  */
 public enum JobCategory
 {
-    WebDeveloper("Web Developer"),
-    FrontEnd("Front End"),
-    BackEnd("Back End"),
+    WebDeveloper("WebDeveloper"),
+    FrontEnd("FrontEnd"),
+    BackEnd("BackEnd"),
     UI("UI"), 
     UX("UX"),
     Devops("Devops"),
-    DataScientist("Data Scientist"),
-    DataAnalyst("Data Analyst");
+    DataScientist("DataScientist"),
+    DataAnalyst("DataAnalyst");
     
     /** representasi enum berupa string */
     private String name;
@@ -25,5 +25,12 @@ public enum JobCategory
     /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
+    }
+    /** mengubah bentuk string menjadi enum */
+    public static JobCategory fromString(String text) {
+        for (JobCategory cat : JobCategory.values())
+            if (cat.name.equalsIgnoreCase(text))
+                return cat;
+        return null;
     }
 }

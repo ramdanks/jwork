@@ -21,4 +21,11 @@ public enum InvoiceStatus {
     public String toString() {
         return name;
     }
+    /** mengubah bentuk string menjadi enum */
+    public static InvoiceStatus fromString(String text) {
+        for (InvoiceStatus cat : InvoiceStatus.values())
+            if (cat.name.equalsIgnoreCase(text))
+                return cat;
+        return null;
+    }
 }

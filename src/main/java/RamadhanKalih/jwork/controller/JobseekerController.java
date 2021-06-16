@@ -10,14 +10,12 @@ public class JobseekerController
 
     @RequestMapping("/{id}")
     public Jobseeker getJobseekerById(@PathVariable int id) {
-        Jobseeker var = null;
         try {
-            var = DatabaseJobseeker.getJobseekerById(id);
-        } catch (JobseekerNotFoundException e) {
-            System.out.println(e.getMessage());
-            var = null;
+            return DatabaseJobseekerPostgre.getJobseeker(id);
+        } catch (Exception e) {
+            System.err.println(e);
         }
-        return var;
+        return null;
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
@@ -25,21 +23,23 @@ public class JobseekerController
                                         @RequestParam(value="email") String email,
                                         @RequestParam(value="password") String password)
     {
-        Jobseeker var = new Jobseeker(DatabaseJobseeker.getLastId() + 1, name, email, password);
         try {
-            if (!DatabaseJobseeker.addJobseeker(var))
-                throw new Exception("Object may violate constraint!");
+            DatabaseJobseekerPostgre.insertJobseeker(name, email, password);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            var = null;
+            System.err.println(e);
         }
-        return var;
+        return null;
     }
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
     public Jobseeker loginJobseeker(@RequestParam(value="email") String email,
                                     @RequestParam(value="password") String password)
     {
-        return DatabaseJobseeker.getJobseekerLogin(email, password);
+        try {
+            return DatabaseJobseekerPostgre.getJobseeker(email, password);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return null;
     }
 }

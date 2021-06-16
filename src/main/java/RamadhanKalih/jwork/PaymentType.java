@@ -7,8 +7,8 @@ package RamadhanKalih.jwork;
  */
 public enum PaymentType
 {
-    BankPayment("Bank Payment"),
-    EwalletPayment("E-Wallet Payment");
+    BankPayment("BankPayment"),
+    EwalletPayment("EwalletPayment");
     
     /** representasi enum berupa string */
     private String name;
@@ -20,5 +20,12 @@ public enum PaymentType
     /** mengakses enumerasi dalam bentuk String */
     public String toString() {
         return name;
+    }
+    /** mengubah bentuk string menjadi enum */
+    public static PaymentType fromString(String text) {
+        for (PaymentType cat : PaymentType.values())
+            if (cat.name.equalsIgnoreCase(text))
+                return cat;
+        return null;
     }
 }

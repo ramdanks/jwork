@@ -2,14 +2,14 @@ package RamadhanKalih.jwork;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.SQLException;
 
 public class DatabaseConnectionPostgre {
 
     private static Connection c = null;
 
-    public static Connection connection() {      
-        if (c == null)
+    public static Connection connection() throws SQLException {   
+        if (c == null || c.isClosed())
         {
             final String db_name = "jwork";
             final String db_user = "postgres";

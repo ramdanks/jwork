@@ -36,12 +36,6 @@ public class DatabaseJobseeker
         for (Jobseeker js : JOBSEEKER_DATABASE)
             if (js.getID() == id)
                 return js;
-        // if not found, get from dbms
-        try {
-            return DatabaseJobseekerPostgre.getJobseeker(id);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
         // throw exception if not found anywhere
         throw new JobseekerNotFoundException(id);
     }
@@ -59,15 +53,7 @@ public class DatabaseJobseeker
             if (js.getEmail().equals(jobseeker.getEmail()))
                 throw new EmailAlreadyExistsException(jobseeker);
         }
-        // insert into postgre
-        try {
-            boolean success = DatabaseJobseekerPostgre.insertJobseeker(jobseeker);
-            if (!success) throw new Exception("Unknown PSQL fail!");
-        } catch (Exception e) {
-            System.err.println(e);
-            return false;
-        }
-        // update table as a cache
+        // insert into database
         JOBSEEKER_DATABASE.add(jobseeker);
         lastId = jobseeker.getID();
         return true;
@@ -78,27 +64,17 @@ public class DatabaseJobseeker
      * @throws JobseekerNotFoundException tidak menemukan jobseeker sesuai dengan parameter
      */
     public static boolean removeJobseeker(int id) throws JobseekerNotFoundException {
-        boolean found = false;
-        // Remove from postgreSQL
-        try {
-            found = DatabaseJobseekerPostgre.removeJobseeker(id);
-        } catch (Exception e) {
-            System.err.println(e);
-            return false;
-        }
-        // throw exception if not found in dbms
-        if (!found) throw new JobseekerNotFoundException(id);
-        // Remove from cache as well
         for (int i = 0; i < JOBSEEKER_DATABASE.size(); i++)
         {
             if (JOBSEEKER_DATABASE.get(i).getID() == id)
             {
                 JOBSEEKER_DATABASE.remove(i);
-                break;
+                return true;
             }
         }
-        return true;
+        throw new JobseekerNotFoundException(id);
     }
+
     public static Jobseeker getJobseekerLogin(String email, String password) {
         // check in local cache
         for (Jobseeker js : JOBSEEKER_DATABASE)
@@ -107,19 +83,6 @@ public class DatabaseJobseeker
                 js.getPassword().equals(password))
                 return js;
         }
-        // if not found, check from dbms
-        Jobseeker js = null;
-        try {
-            js = DatabaseJobseekerPostgre.getJobseeker(email, password);
-            if (js != null)
-            {
-                // update to cache
-                JOBSEEKER_DATABASE.add(js);
-                lastId = js.getID();
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        return js;
+        return null;
     }
 }
