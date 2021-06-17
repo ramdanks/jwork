@@ -23,8 +23,8 @@ public class Jobseeker
     /** waktu jobseeker bergabung atau dibangun*/
     private Calendar joinDate;
     
-    private static final String EMAIL_PATTERN = "^(?!.*([.])\\1)[^.-][a-zA-Z0-9.&*_~]+@[^-. ][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*";
-    private static final String PASSWORD_PATTERN = "^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$";
+    public static final String EMAIL_PATTERN = "^(?!.*([.])\\1)[^.-][a-zA-Z0-9.&*_~]+@[^-. ][a-zA-Z0-9-.&*_~]+(?:\\.[a-zA-Z0-9-]+)*";
+    public static final String PASSWORD_PATTERN = "^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$";
 
     /** ctor untuk inisialisasi variable dengan tanggal bergabung*/
     public Jobseeker(int id, String name, String email,
